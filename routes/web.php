@@ -20,7 +20,7 @@ Route::get('/', function () {
 
 Route::get('/guru', function () {
     return view('admin.pages.guru');
-<<<<<<< Updated upstream
+
 })->name("guru");
 
 Route::get('/kelas', function () {
@@ -38,8 +38,7 @@ Route::get('/siswa', function () {
 Route::get('/ujian', function () {
     return view('admin.pages.ujian');
 })->name("ujian");
-=======
-});
+
 
 Route::get('/soal', [SoalController::class, 'index']);
->>>>>>> Stashed changes
+
