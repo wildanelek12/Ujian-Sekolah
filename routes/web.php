@@ -20,7 +20,6 @@ Route::get('/', function () {
 
 Route::get('/guru', function () {
     return view('admin.pages.guru');
-
 })->name("guru");
 
 Route::get('/kelas', function () {
@@ -42,3 +41,9 @@ Route::get('/ujian', function () {
 
 Route::get('/soal', [SoalController::class, 'index']);
 
+Route::get('/dashboardSiswa', function () {
+    return view('siswa.pages.dashboardSiswa');
+})->name("dashboards");
+Route::get('/kerjakan', function () {
+    return view('siswa.pages.kerjakan');
+})->name("kerjakan");
