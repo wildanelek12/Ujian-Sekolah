@@ -14,9 +14,25 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('admin.pages.dashboard');
+})->name("dashboard");
 
-Route::get('/admin',function(){
+Route::get('/guru', function () {
     return view('admin.pages.guru');
-});
+})->name("guru");
+
+Route::get('/kelas', function () {
+    return view('admin.pages.kelas');
+})->name("kelas");
+
+Route::get('/mapel', function () {
+    return view('admin.pages.mapel');
+})->name("mapel");
+
+Route::get('/siswa', function () {
+    return view('admin.pages.siswa');
+})->name("siswa");
+
+Route::get('/ujian', function () {
+    return view('admin.pages.ujian');
+})->name("ujian");

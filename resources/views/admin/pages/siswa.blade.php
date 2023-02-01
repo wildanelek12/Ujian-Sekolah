@@ -1,5 +1,6 @@
 @extends('admin.index')
 @section('main')
+
 <div class="container-fluid p-0">
 
     <div class="row justify-content-end">
@@ -17,43 +18,43 @@
                         <thead>
                             <tr>
                                 <th>Nama</th>
-                                <th>NIP</th>
-                                <th>Mata Pelajaran</th>
+                                <th>NIS</th>
+                                <th>Kelas</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Wahyu Sakti</td>
-                                <td>1111111111</td>
-                                <td>Matematika</td>
+                                <td>Solichul N</td>
+                                <td>16601</td>
+                                <td>X MIPA 1</td>
                                 <td>
                                     <a href="#" class="btn btn-sm btn-primary"><i data-feather="edit-2"></i></a>
                                     <a href="#" class="btn btn-sm btn-danger btn-delete" data-id="#"><i data-feather="trash-2"></i></i></a> 
                                 </td>
                             </tr>
                             <tr>
-                                <td>Achmad Hamdan</td>
-                                <td>2222222222</td>
-                                <td>Biologi</td>
+                                <td>M Asadi</td>
+                                <td>16602</td>
+                                <td>XI MIPA 1</td>
                                 <td>
                                     <a href="#" class="btn btn-sm btn-primary"><i data-feather="edit-2"></i></a>
                                     <a href="#" class="btn btn-sm btn-danger btn-delete" data-id="#"><i data-feather="trash-2"></i></i></a> 
                                 </td>
                             </tr>
                             <tr>
-                                <td>Shofiyah</td>
-                                <td>3333333333</td>
-                                <td>Bahasa Indonesia</td>
+                                <td>Kenny V</td>
+                                <td>16620</td>
+                                <td>X IPS 1</td>
                                 <td>
                                     <a href="#" class="btn btn-sm btn-primary"><i data-feather="edit-2"></i></a>
                                     <a href="#" class="btn btn-sm btn-danger btn-delete" data-id="#"><i data-feather="trash-2"></i></i></a> 
                                 </td>
                             </tr>
                             <tr>
-                                <td>Hakkuk Elmunsyah</td>
-                                <td>4444444444</td>
-                                <td>Fisika</td>
+                                <td>Maulana</td>
+                                <td>16621</td>
+                                <td>X IPS 2</td>
                                 <td>
                                     <a href="#" class="btn btn-sm btn-primary"><i data-feather="edit-2"></i></a>
                                     <a href="#" class="btn btn-sm btn-danger btn-delete" data-id="#"><i data-feather="trash-2"></i></i></a> 

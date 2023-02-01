@@ -1,5 +1,6 @@
 @extends('admin.index')
 @section('main')
+
 <div class="container-fluid p-0">
 
     <div class="row justify-content-end">
@@ -16,44 +17,44 @@
                     <table id="datatables-reponsive" class="table table-striped" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Nama</th>
-                                <th>NIP</th>
                                 <th>Mata Pelajaran</th>
+                                <th>Kode</th>
+                                <th>Jurusan</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Wahyu Sakti</td>
-                                <td>1111111111</td>
                                 <td>Matematika</td>
+                                <td>0001</td>
+                                <td>MIPA</td>
                                 <td>
                                     <a href="#" class="btn btn-sm btn-primary"><i data-feather="edit-2"></i></a>
                                     <a href="#" class="btn btn-sm btn-danger btn-delete" data-id="#"><i data-feather="trash-2"></i></i></a> 
                                 </td>
                             </tr>
                             <tr>
-                                <td>Achmad Hamdan</td>
-                                <td>2222222222</td>
-                                <td>Biologi</td>
-                                <td>
-                                    <a href="#" class="btn btn-sm btn-primary"><i data-feather="edit-2"></i></a>
-                                    <a href="#" class="btn btn-sm btn-danger btn-delete" data-id="#"><i data-feather="trash-2"></i></i></a> 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Shofiyah</td>
-                                <td>3333333333</td>
-                                <td>Bahasa Indonesia</td>
-                                <td>
-                                    <a href="#" class="btn btn-sm btn-primary"><i data-feather="edit-2"></i></a>
-                                    <a href="#" class="btn btn-sm btn-danger btn-delete" data-id="#"><i data-feather="trash-2"></i></i></a> 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Hakkuk Elmunsyah</td>
-                                <td>4444444444</td>
                                 <td>Fisika</td>
+                                <td>0002</td>
+                                <td>MIPA</td>
+                                <td>
+                                    <a href="#" class="btn btn-sm btn-primary"><i data-feather="edit-2"></i></a>
+                                    <a href="#" class="btn btn-sm btn-danger btn-delete" data-id="#"><i data-feather="trash-2"></i></i></a> 
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Sejarah</td>
+                                <td>0021</td>
+                                <td>IPS</td>
+                                <td>
+                                    <a href="#" class="btn btn-sm btn-primary"><i data-feather="edit-2"></i></a>
+                                    <a href="#" class="btn btn-sm btn-danger btn-delete" data-id="#"><i data-feather="trash-2"></i></i></a> 
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Ekonomi</td>
+                                <td>0022</td>
+                                <td>IPS</td>
                                 <td>
                                     <a href="#" class="btn btn-sm btn-primary"><i data-feather="edit-2"></i></a>
                                     <a href="#" class="btn btn-sm btn-danger btn-delete" data-id="#"><i data-feather="trash-2"></i></i></a> 
