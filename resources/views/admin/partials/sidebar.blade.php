@@ -42,7 +42,7 @@
 
         <ul class="sidebar-nav">
             <li class="sidebar-header">
-                Pages
+                Pagess
             </li>
             <li class="sidebar-item active">
                 <a data-bs-target="#dashboards" data-bs-toggle="collapse" class="sidebar-link">
