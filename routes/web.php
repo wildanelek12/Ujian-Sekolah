@@ -27,7 +27,7 @@ Auth::routes();
 Route::group([
     'prefix'      => 'siswa',
     'middleware' => 'siswa'
-  ], function () {
+], function () {
     Route::get('/', function () {
         return view('siswa.pages.dashboardSiswa');
     })->name("siswa.dashboard");
@@ -35,38 +35,39 @@ Route::group([
     Route::get('/kerjakan', function () {
         return view('siswa.pages.kerjakan');
     })->name("kerjakan");
-  
 });
 
 Route::group([
     'prefix'      => 'guru',
     'middleware' => 'guru'
-  ], function () {
+], function () {
     Route::get('/', function () {
         return view('guru.pages.dashboardGuru');
     })->name("guru.dashboard");
     Route::get('/hasil', function () {
         return view('guru.pages.hasil_ujian');
     })->name("guru.hasil");
-  
+    Route::get('/create', function () {
+        return view('guru.pages.create_soal');
+    })->name("guru.create");
 });
 
 Route::group([
     'prefix'      => 'admin',
     'middleware' => 'admin'
-  ], function () {
+], function () {
     Route::get('/', function () {
         return view('admin.pages.dashboard');
     })->name("admin.dashboard");
 
     Route::get('/guru', function () {
-        $datas = User::where('role',2)->get();
-        return view('admin.pages.guru',compact('datas'));
+        $datas = User::where('role', 2)->get();
+        return view('admin.pages.guru', compact('datas'));
     })->name("admin.guru");
     Route::post('/guru', [UserController::class, 'createGuru'])->name('admin.guru.store');
     Route::get('/guru/{id}/edit', function ($id) {
-        $data = User::where('id',$id)->first();
-        return view('admin.pages.update_guru',compact('data'));
+        $data = User::where('id', $id)->first();
+        return view('admin.pages.update_guru', compact('data'));
     })->name("admin.guru.edit");
     Route::put('/guru/{id}', [UserController::class, 'updateGuru'])->name('admin.guru.update');
     Route::delete('/guru/{id}', [UserController::class, 'deleteGuru'])->name('admin.guru.delete');
@@ -74,19 +75,18 @@ Route::group([
     Route::get('/kelas', function () {
         return view('admin.pages.kelas');
     })->name("admin.kelas");
-    
+
     Route::get('/mapel', function () {
         return view('admin.pages.mapel');
     })->name("admin.mapel");
-    
+
     Route::get('/siswa', function () {
         return view('admin.pages.siswa');
     })->name("admin.siswa");
-    
+
     Route::get('/ujian', function () {
         return view('admin.pages.ujian');
     })->name("admin.ujian");
-  
 });
 
 
