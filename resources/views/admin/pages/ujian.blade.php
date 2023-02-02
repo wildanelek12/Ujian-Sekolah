@@ -1,15 +1,44 @@
 @extends('admin.index')
 @section('main')
 
-Ini Ujian
-
-
 <div class="container-fluid p-0">
 
-    <div class="row justify-content-end">
-        <div class="col-3 text-end">
-            {{-- <a class="btn btn-success"><i data-feather="plus-circle"></i> Create</a> --}}
-            <button class="btn btn-success"><i class="fas fa-plus-circle"></i> Create</button>
+    <div class="row">
+        <div class="col-8 col-xl-8">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Tambahkan Ujian</h3>
+                </div>
+                <div class="card-body">
+                    <form>
+                        {{-- Nama Mapel --}}
+                        <div class="mb-3">
+                            <label class="form-label">Nama Mata Pelajaran</label>
+                            <input type = "text" class="form-control" rows="1" name="nama">
+                        </div>
+                        {{-- Kelas --}}
+                        <div class="mb-3">
+                            <label class="form-label">Kelas</label>
+                            <select class="form-control choices-single" name="kelas">
+                                <option value="">X</option>
+                                <option value="">XI</option>
+                                <option value="">XII</option>
+                            </select>
+                        </div>
+                        {{-- Waktu Mulai Ujian --}}
+                        <div class="mb-3">
+                            <label class="form-label">Waktu Mulai Ujian</label>
+                            <input type="text" class="form-control flatpickr-datetime" placeholder="pilih tanggal" name="waktu_mulai" />
+                        </div>
+                        {{-- Waktu Berakhir Ujian --}}
+                        <div class="mb-3">
+                            <label class="form-label">Waktu Berakhir Ujian</label>
+                            <input type="text" class="form-control flatpickr-datetime" placeholder="pilih tanggal" name="waktu_selesai" />
+                        </div>
+                        <button type="submit" class="btn btn-primary" name="tambahkan">Tambahkan</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
     
@@ -74,6 +103,17 @@ Ini Ujian
 <script src="js/app.js"></script>
 
 <script src="js/datatables.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        new Choices(document.querySelector(".choices-single"));
+        // Flatpickr
+        flatpickr(".flatpickr-datetime", {
+            enableTime: true,
+            dateFormat: "Y-m-d H:i",
+        });
+    });
+</script>
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {

@@ -1,14 +1,25 @@
 @extends('admin.index')
 @section('main')
 
-Ini Kelas
-
 <div class="container-fluid p-0">
 
-    <div class="row justify-content-end">
-        <div class="col-3 text-end">
-            {{-- <a class="btn btn-success"><i data-feather="plus-circle"></i> Create</a> --}}
-            <button class="btn btn-success"><i class="fas fa-plus-circle"></i> Create</button>
+     {{-- Form Input --}}
+     <div class="row">
+        <div class="col-8 col-xl-8">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Tambahkan Kelas</h3>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Nama Kelas</label>
+                            <input type = "text" class="form-control" rows="1" name="nama">
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="tambahkan" name="tambahkan">Tambahkan</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
     
@@ -21,7 +32,6 @@ Ini Kelas
                             <tr>
                                 <th>Kelas</th>
                                 <th>Peserta</th>
-                                <th>Jurusan</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -29,7 +39,6 @@ Ini Kelas
                             <tr>
                                 <td>X MIPA 1</td>
                                 <td>30</td>
-                                <td>MIPA</td>
                                 <td>
                                     <a href="#" class="btn btn-sm btn-primary"><i data-feather="edit-2"></i></a>
                                     <a href="#" class="btn btn-sm btn-danger btn-delete" data-id="#"><i data-feather="trash-2"></i></i></a> 
@@ -38,7 +47,6 @@ Ini Kelas
                             <tr>
                                 <td>X MIPA 5</td>
                                 <td>32</td>
-                                <td>MIPA</td>
                                 <td>
                                     <a href="#" class="btn btn-sm btn-primary"><i data-feather="edit-2"></i></a>
                                     <a href="#" class="btn btn-sm btn-danger btn-delete" data-id="#"><i data-feather="trash-2"></i></i></a> 
@@ -47,7 +55,6 @@ Ini Kelas
                             <tr>
                                 <td>X IPS 3</td>
                                 <td>29</td>
-                                <td>IPS</td>
                                 <td>
                                     <a href="#" class="btn btn-sm btn-primary"><i data-feather="edit-2"></i></a>
                                     <a href="#" class="btn btn-sm btn-danger btn-delete" data-id="#"><i data-feather="trash-2"></i></i></a> 
@@ -56,7 +63,6 @@ Ini Kelas
                             <tr>
                                 <td>XI IPS 3</td>
                                 <td>32</td>
-                                <td>IPS</td>
                                 <td>
                                     <a href="#" class="btn btn-sm btn-primary"><i data-feather="edit-2"></i></a>
                                     <a href="#" class="btn btn-sm btn-danger btn-delete" data-id="#"><i data-feather="trash-2"></i></i></a> 

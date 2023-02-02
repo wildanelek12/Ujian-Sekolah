@@ -21,12 +21,12 @@
                     <form>
                         <div class="mb-3">
                             <label class="form-label">Nama Mata Pelajaran</label>
-                            <input type = "text" class="form-control" rows="1">
+                            <input type = "text" class="form-control" rows="1" name="nama">
                         </div>
                         {{-- Kelas --}}
                         <div class="mb-3">
                             <label class="form-label">Kelas</label>
-                            <select class="form-control choices-single">
+                            <select class="form-control choices-single" name="kelas">
                                 <option value="">X</option>
                                 <option value="">XI</option>
                                 <option value="">XII</option>
@@ -35,7 +35,7 @@
                         {{-- Guru Pengampu --}}
                         <div class="mb-3">
                             <label class="form-label">Guru Pengampu</label>
-                            <select class="form-control choices-single">
+                            <select class="form-control choices-single" name="user_id">
                                 <optgroup label="Kelas X">
                                     <option value="">Dr. Sholikin M.Pd</option>
                                     <option value="">Ahmad Syahroni M.Ag</option>
@@ -53,7 +53,13 @@
                                 </optgroup>
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-primary">Tambahkan</button>
+                        {{-- Deskripsi --}}
+                        <div class="mb-3">
+                            <label class="form-label" for="inputUsername">Deskripsi Mata Pelajaran</label>
+                            <textarea rows="3" class="form-control" id="deskripsi" name="deskripsi"
+                                placeholder="Tuliskan Deskripsi Mata Pelajaran"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" name="tambahkan">Tambahkan</button>
                     </form>
                 </div>
             </div>
@@ -69,7 +75,7 @@
                             <tr>
                                 <th>Mata Pelajaran</th>
                                 <th>Kode</th>
-                                <th>Jurusan</th>
+                                <th>Deskripsi</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -77,7 +83,7 @@
                             <tr>
                                 <td>Matematika</td>
                                 <td>0001</td>
-                                <td>MIPA</td>
+                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
                                 <td>
                                     <a href="#" class="btn btn-sm btn-primary"><i data-feather="edit-2"></i></a>
                                     <a href="#" class="btn btn-sm btn-danger btn-delete" data-id="#"><i data-feather="trash-2"></i></i></a> 
@@ -86,7 +92,7 @@
                             <tr>
                                 <td>Fisika</td>
                                 <td>0002</td>
-                                <td>MIPA</td>
+                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
                                 <td>
                                     <a href="#" class="btn btn-sm btn-primary"><i data-feather="edit-2"></i></a>
                                     <a href="#" class="btn btn-sm btn-danger btn-delete" data-id="#"><i data-feather="trash-2"></i></i></a> 
@@ -95,7 +101,7 @@
                             <tr>
                                 <td>Sejarah</td>
                                 <td>0021</td>
-                                <td>IPS</td>
+                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
                                 <td>
                                     <a href="#" class="btn btn-sm btn-primary"><i data-feather="edit-2"></i></a>
                                     <a href="#" class="btn btn-sm btn-danger btn-delete" data-id="#"><i data-feather="trash-2"></i></i></a> 
@@ -104,7 +110,7 @@
                             <tr>
                                 <td>Ekonomi</td>
                                 <td>0022</td>
-                                <td>IPS</td>
+                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
                                 <td>
                                     <a href="#" class="btn btn-sm btn-primary"><i data-feather="edit-2"></i></a>
                                     <a href="#" class="btn btn-sm btn-danger btn-delete" data-id="#"><i data-feather="trash-2"></i></i></a> 

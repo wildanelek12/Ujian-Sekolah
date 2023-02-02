@@ -14,15 +14,15 @@
                     <form>
                         <div class="mb-3">
                             <label class="form-label">Nama</label>
-                            <input type = "text" class="form-control" rows="1">
+                            <input type = "text" class="form-control" rows="1" name="nama">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">NIS</label>
-                            <input type = "text" class="form-control" rows="1">
+                            <input type = "text" class="form-control" rows="1" name="nis">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Kelas</label>
-                            <select class="form-control choices-single">
+                            <select class="form-control choices-single" name="kelas">
                                 <optgroup label="Kelas X">
                                     <option value="">X MIPA 1</option>
                                     <option value="">X MIPA 2</option>
@@ -55,7 +55,7 @@
                                 </optgroup>
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-primary">Tambahkan</button>
+                        <button type="submit" class="btn btn-primary" id="tambahkan" name="tambahkan">Tambahkan</button>
                     </form>
                 </div>
             </div>
