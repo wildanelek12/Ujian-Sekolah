@@ -21,7 +21,7 @@
                                 <td>fca311</td>
                                 <td>X</td>
                                 <td>
-                                    <a href="#" class="btn btn-sm btn-primary"><i data-feather="eye"></i> Lihat</a>
+                                    <a href="{{route('guru.view')}}" class="btn btn-sm btn-primary"><i data-feather="eye"></i> Lihat</a>
                                 </td>
                             </tr>
                             <tr>

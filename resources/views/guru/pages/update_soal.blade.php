@@ -3,7 +3,7 @@
     
 <div class="row">
     <div class="col-12 text-center mb-3">
-        <h2>Tambahkan Soal</h2>
+        <h2>Update Soal</h2>
     </div>
 </div>
 {{-- Soal --}}
@@ -384,8 +384,7 @@
 
 <div class="row justify-content-end">
     <div class="col-3 text-end">
-        <a href="{{route('guru.dashboard')}}"><button class="btn btn-danger"><i class=""></i> Upload File</button></a>
-        <a href="{{route('guru.dashboard')}}"><button class="btn btn-success"><i class=""></i> Tambahkan</button></a>
+        <a href="{{route('guru.dashboard')}}"><button class="btn btn-success"><i class=""></i> Update</button></a>
     </div>
 </div>
 

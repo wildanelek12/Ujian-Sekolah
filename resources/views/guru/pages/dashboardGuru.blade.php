@@ -39,7 +39,7 @@
                                 <td>Agak Gedhe</td>
                                 <td>C</td>
                                 <td>
-                                    <a href="#" class="btn btn-sm btn-primary"><i data-feather="edit-2"></i></a>
+                                    <a href="{{route('guru.update')}}" class="btn btn-sm btn-primary"><i data-feather="edit-2"></i></a>
                                         <a href="#" class="btn btn-sm btn-danger btn-delete" data-id="#"><i
                                                 data-feather="trash-2"></i></i></a>
                                 </td>

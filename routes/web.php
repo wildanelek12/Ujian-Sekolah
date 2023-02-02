@@ -53,6 +53,12 @@ Route::group([
     Route::get('/create', function () {
         return view('guru.pages.create_soal');
     })->name("guru.create");
+    Route::get('/update', function () {
+        return view('guru.pages.update_soal');
+    })->name("guru.update");
+    Route::get('/view', function () {
+        return view('guru.pages.lihat_hasil');
+    })->name("guru.view");
 });
 
 Route::group([
@@ -80,10 +86,10 @@ Route::group([
         $kelas = Kelas::all();
         $total_kelas = [];
         foreach ($kelas as $key) {
-            $total_user = User::where('kelas_id',$key->id)->count();
+            $total_user = User::where('kelas_id', $key->id)->count();
             $total_kelas[$key->id] = $total_user;
         }
-        return view('admin.pages.kelas',compact('kelas','total_kelas'));
+        return view('admin.pages.kelas', compact('kelas', 'total_kelas'));
     })->name("admin.kelas");
     Route::post('/kelas', [KelasController::class, 'store'])->name('admin.kelas.store');
     Route::get('/kelas/{id}/edit', function ($id) {
@@ -96,17 +102,17 @@ Route::group([
 
     Route::get('/siswa', function () {
         $datas = User::where('role', 3)
-        ->join("kelas",'users.kelas_id','=','kelas.id')    
-        ->select("users.*","kelas.nama as kelas")
-        ->get();
+            ->join("kelas", 'users.kelas_id', '=', 'kelas.id')
+            ->select("users.*", "kelas.nama as kelas")
+            ->get();
         $kelas = Kelas::all();
-        return view('admin.pages.siswa', compact('datas','kelas'));
+        return view('admin.pages.siswa', compact('datas', 'kelas'));
     })->name("admin.siswa");
     Route::post('/siswa', [UserController::class, 'createSiswa'])->name('admin.siswa.store');
     Route::get('/siswa/{id}/edit', function ($id) {
         $data = User::where('id', $id)->first();
         $kelas = Kelas::all();
-        return view('admin.pages.update_siswa', compact('data','kelas'));
+        return view('admin.pages.update_siswa', compact('data', 'kelas'));
     })->name("admin.siswa.edit");
     Route::put('/siswa/{id}', [UserController::class, 'updateSiswa'])->name('admin.siswa.update');
     Route::delete('/siswa/{id}', [UserController::class, 'deleteSiswa'])->name('admin.siswa.delete');
