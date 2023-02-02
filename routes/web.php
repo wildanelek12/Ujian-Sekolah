@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\SoalController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,21 +17,13 @@ use Illuminate\Support\Facades\Route;
 
 
 
-
-
-
 Route::get('/soal', [SoalController::class, 'index']);
-
-
-
-
-
-
 Auth::routes();
 
 
 Route::group([
     'prefix'      => 'siswa',
+    'middleware' => 'siswa'
   ], function () {
     Route::get('/', function () {
         return view('siswa.pages.dashboardSiswa');
@@ -44,6 +37,7 @@ Route::group([
 
 Route::group([
     'prefix'      => 'guru',
+    'middleware' => 'guru'
   ], function () {
     Route::get('/', function () {
         return view('guru.pages.dashboardGuru');
@@ -56,6 +50,7 @@ Route::group([
 
 Route::group([
     'prefix'      => 'admin',
+    'middleware' => 'admin'
   ], function () {
     Route::get('/', function () {
         return view('admin.pages.dashboard');
@@ -83,4 +78,6 @@ Route::group([
 });
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/test', function () {
+    return view('admin.pages.ujian');
+})->name("admin.ujian");

@@ -30,7 +30,11 @@
                             Privacy</a>
                         <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="help-circle"></i> Help Center</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Log out</a>
+                        <form action="{{route('logout')}}" method="POST">
+                            @csrf
+                            <button class="dropdown-item" type="submit">Logout</button>
+                            <a class="dropdown-item" href="#"></a>
+                        </form>
                     </div>
 
                     <div class="sidebar-user-subtitle">Designer</div>

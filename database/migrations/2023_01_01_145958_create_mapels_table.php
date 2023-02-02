@@ -17,6 +17,8 @@ class CreateMapelsTable extends Migration
             $table->id();
             $table->string('nama');
             $table->string('deskripsi');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
