@@ -81,3 +81,7 @@ Route::group([
 Route::get('/test', function () {
     return view('admin.pages.ujian');
 })->name("admin.ujian");
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

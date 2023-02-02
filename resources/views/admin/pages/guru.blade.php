@@ -2,51 +2,43 @@
 @section('main')
     <div class="container-fluid p-0">
 
-        <div class="row justify-content-end">
+        {{-- <div class="row justify-content-end">
             <div class="col-3 text-end">
-                {{-- <a class="btn btn-success"><i data-feather="plus-circle"></i> Create</a> --}}
+                <a class="btn btn-success"><i data-feather="plus-circle"></i> Create</a>
                 <button class="btn btn-success"><i class="fas fa-plus-circle"></i> Create</button>
             </div>
-        </div>
+        </div> --}}
 
+        {{-- Form Input --}}
         <div class="row">
             <div class="col-8 col-xl-8">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-title">Basic form</h5>
-                        <h6 class="card-subtitle text-muted">Default Bootstrap form layout.</h6>
+                        <h3 class="card-title">Tambahkan Guru</h3>
                     </div>
                     <div class="card-body">
                         <form>
                             <div class="mb-3">
-                                <label class="form-label">Email address</label>
-                                <input type="email" class="form-control" placeholder="Email">
+                                <label class="form-label">Nama</label>
+                                <input type = "text" class="form-control" rows="1">
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">Password</label>
-                                <input type="password" class="form-control" placeholder="Password">
+                                <label class="form-label">NIP</label>
+                                <input type = "text" class="form-control" rows="1">
                             </div>
-                            <div class="mb-3">
-                                <label class="form-label">Textarea</label>
-                                <textarea class="form-control" placeholder="Textarea" rows="1"></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label w-100">File input</label>
-                                <input type="file">
-                                <small class="form-text text-muted">Example block-level help text here.</small>
-                            </div>
-                            <div class="mb-3">
+                            {{-- <div class="mb-3">
                                 <label class="form-check m-0">
                                     <input type="checkbox" class="form-check-input">
                                     <span class="form-check-label">Check me out</span>
                                 </label>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            </div> --}}
+                            <button type="submit" class="btn btn-primary">Tambahkan</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="row mt-2">
             <div class="col-12">
                 <div class="card">

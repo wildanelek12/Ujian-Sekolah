@@ -3,10 +3,60 @@
 
 <div class="container-fluid p-0">
 
-    <div class="row justify-content-end">
+    {{-- <div class="row justify-content-end">
         <div class="col-3 text-end">
-            {{-- <a class="btn btn-success"><i data-feather="plus-circle"></i> Create</a> --}}
+            <a class="btn btn-success"><i data-feather="plus-circle"></i> Create</a>
             <button class="btn btn-success"><i class="fas fa-plus-circle"></i> Create</button>
+        </div>
+    </div> --}}
+
+    {{-- Form Input --}}
+    <div class="row">
+        <div class="col-8 col-xl-8">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Tambahkan Mata Pelajaran</h3>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Nama Mata Pelajaran</label>
+                            <input type = "text" class="form-control" rows="1">
+                        </div>
+                        {{-- Kelas --}}
+                        <div class="mb-3">
+                            <label class="form-label">Kelas</label>
+                            <select class="form-control choices-single">
+                                <option value="">X</option>
+                                <option value="">XI</option>
+                                <option value="">XII</option>
+                            </select>
+                        </div>
+                        {{-- Guru Pengampu --}}
+                        <div class="mb-3">
+                            <label class="form-label">Guru Pengampu</label>
+                            <select class="form-control choices-single">
+                                <optgroup label="Kelas X">
+                                    <option value="">Dr. Sholikin M.Pd</option>
+                                    <option value="">Ahmad Syahroni M.Ag</option>
+                                    <option value="">Khusnul Khatimah S.T, M.Pd</option>
+                                </optgroup>
+                                <optgroup label="Kelas XI">
+                                    <option value="">Tono M.Pd</option>
+                                    <option value="">Drs. Hj. Ilham Nurudin M.Ag</option>
+                                    <option value="">Saifuddin M.T</option>
+                                </optgroup>
+                                <optgroup label="Kelas XII">
+                                    <option value="">Hj. M. Syaifullah M.Pd</option>
+                                    <option value="">Kevin De Bruyne M.Pd</option>
+                                    <option value="">Rossy Valentinudin S.T, M.Pd</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Tambahkan</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
     
@@ -71,6 +121,13 @@
 <script src="js/app.js"></script>
 
 <script src="js/datatables.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Choices.js
+        new Choices(document.querySelector(".choices-single"));
+    });
+</script>
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {

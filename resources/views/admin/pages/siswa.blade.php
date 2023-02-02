@@ -3,10 +3,62 @@
 
 <div class="container-fluid p-0">
 
-    <div class="row justify-content-end">
-        <div class="col-3 text-end">
-            {{-- <a class="btn btn-success"><i data-feather="plus-circle"></i> Create</a> --}}
-            <button class="btn btn-success"><i class="fas fa-plus-circle"></i> Create</button>
+    {{-- Form Input --}}
+    <div class="row">
+        <div class="col-8 col-xl-8">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Tambahkan Siswa</h3>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Nama</label>
+                            <input type = "text" class="form-control" rows="1">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">NIS</label>
+                            <input type = "text" class="form-control" rows="1">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Kelas</label>
+                            <select class="form-control choices-single">
+                                <optgroup label="Kelas X">
+                                    <option value="">X MIPA 1</option>
+                                    <option value="">X MIPA 2</option>
+                                    <option value="">X MIPA 3</option>
+                                    <option value="">X MIPA 4</option>
+                                    <option value="">X MIPA 5</option>
+                                    <option value="">X IPS 1</option>
+                                    <option value="">X IPS 2</option>
+                                    <option value="">X IPS 3</option>
+                                </optgroup>
+                                <optgroup label="Kelas XI">
+                                    <option value="">XI MIPA 1</option>
+                                    <option value="">XI MIPA 2</option>
+                                    <option value="">XI MIPA 3</option>
+                                    <option value="">XI MIPA 4</option>
+                                    <option value="">XI MIPA 5</option>
+                                    <option value="">XI IPS 1</option>
+                                    <option value="">XI IPS 2</option>
+                                    <option value="">XI IPS 3</option>
+                                </optgroup>
+                                <optgroup label="Kelas XII">
+                                    <option value="">XII MIPA 1</option>
+                                    <option value="">XII MIPA 2</option>
+                                    <option value="">XII MIPA 3</option>
+                                    <option value="">XII MIPA 4</option>
+                                    <option value="">XII MIPA 5</option>
+                                    <option value="">XII IPS 1</option>
+                                    <option value="">XII IPS 2</option>
+                                    <option value="">XII IPS 3</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Tambahkan</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
     
@@ -71,6 +123,13 @@
 <script src="js/app.js"></script>
 
 <script src="js/datatables.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Choices.js
+        new Choices(document.querySelector(".choices-single"));
+    });
+</script>
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
