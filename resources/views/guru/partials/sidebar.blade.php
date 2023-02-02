@@ -45,15 +45,15 @@
                 Pages
             </li>
             {{-- Dashboard --}}
-            <li class="sidebar-item @if(request()->routeIs('dashboardg')) active @endif">
-                <a class="sidebar-link" href="{{route('dashboardg')}}">
+            <li class="sidebar-item @if(request()->routeIs('guru.dashboard')) active @endif">
+                <a class="sidebar-link" href="{{route('guru.dashboard')}}">
                     <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
                 </a>
             </li>
 
             {{-- Hasil Ujian --}}
-            <li class="sidebar-item @if(request()->routeIs('HasilUjian')) active @endif">
-                <a class="sidebar-link" href="{{route('HasilUjian')}}">
+            <li class="sidebar-item @if(request()->routeIs('guru.hasil')) active @endif">
+                <a class="sidebar-link" href="{{route('guru.hasil')}}">
                     <i class="align-middle" data-feather="calendar"></i> <span class="align-middle">Hasil Ujian</span>
                 </a>
             </li>
