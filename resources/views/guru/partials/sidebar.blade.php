@@ -51,12 +51,12 @@
                 </a>
             </li>
 
-            {{-- Data Ujian --}}
-            {{-- <li class="sidebar-item @if(request()->routeIs('kerjakan')) active @endif">
-                <a class="sidebar-link" href="{{route('kerjakan')}}">
-                    <i class="align-middle" data-feather="calendar"></i> <span class="align-middle">Ujian</span>
+            {{-- Hasil Ujian --}}
+            <li class="sidebar-item @if(request()->routeIs('HasilUjian')) active @endif">
+                <a class="sidebar-link" href="{{route('HasilUjian')}}">
+                    <i class="align-middle" data-feather="calendar"></i> <span class="align-middle">Hasil Ujian</span>
                 </a>
-            </li> --}}
+            </li>
 
             {{-- List End --}}
         </ul>

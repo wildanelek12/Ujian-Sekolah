@@ -42,7 +42,7 @@
 
                     {{-- Button --}}
                     <div class="text-end">
-                        <button class="btn btn-pill btn-primary">Kerjakan</button>
+                        <button class="btn btn-pill btn-primary" disabled>Kerjakan</button>
                     </div>
                 </div>  
             </div>
@@ -68,7 +68,7 @@
 
                     {{-- Button --}}
                     <div class="text-end">
-                        <button class="btn btn-pill btn-primary">Kerjakan</button>
+                        <button class="btn btn-pill btn-primary" disabled>Kerjakan</button>
                     </div>
                 </div>  
             </div>
