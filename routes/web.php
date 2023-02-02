@@ -41,9 +41,7 @@ Route::get('/ujian', function () {
 
 Route::get('/soal', [SoalController::class, 'index']);
 
-Route::get('/dashboardSiswa', function () {
-    return view('siswa.pages.dashboardSiswa');
-})->name("dashboards");
+
 Route::get('/kerjakan', function () {
     return view('siswa.pages.kerjakan');
 })->name("kerjakan");
@@ -53,5 +51,15 @@ Route::get('/dashboardGuru', function () {
 })->name("dashboardg");
 
 Auth::routes();
+
+
+Route::group([
+    'prefix'      => 'siswa',
+  ], function () {
+    Route::get('/', function () {
+        return view('siswa.pages.dashboardSiswa');
+    })->name("siswa.dashboard");
+  
+  });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

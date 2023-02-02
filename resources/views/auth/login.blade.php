@@ -55,10 +55,11 @@
                                             class="img-fluid rounded-circle" width="132" height="132" />
                                     </div>
                                     <form method="POST" action="{{ route('login') }}">
+                                        @csrf
                                         <div class="mb-3">
-                                            <label class="form-label">Email</label>
-                                            <input class="form-control form-control-lg" type="email" name="email"
-                                                placeholder="Enter your email" />
+                                            <label class="form-label">Nomor Induk</label>
+                                            <input class="form-control form-control-lg" type="number" name="induk"
+                                                placeholder="Enter your Nomor Induk" />
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Password</label>
