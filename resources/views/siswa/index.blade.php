@@ -12,8 +12,9 @@
 
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-	<link class="{{asset('js-stylesheet')}}" href="{{asset('css/light.css')}}" rel="stylesheet">
+	<link class="js-stylesheet" href="{{asset('css/light.css')}}" rel="stylesheet">
 	<script src="{{asset('js/settings.js')}}"></script>
+	<script src="{{asset('js/datatables.js')}}"></script>
 	<style>
 		body {
 			opacity: 0;

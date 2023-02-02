@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\SoalController;
+use App\Http\Controllers\UserController;
+use App\Http\Middleware\Guru;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -55,10 +58,19 @@ Route::group([
     Route::get('/', function () {
         return view('admin.pages.dashboard');
     })->name("admin.dashboard");
+
     Route::get('/guru', function () {
-        return view('admin.pages.guru');
+        $datas = User::where('role',2)->get();
+        return view('admin.pages.guru',compact('datas'));
     })->name("admin.guru");
-    
+    Route::post('/guru', [UserController::class, 'createGuru'])->name('admin.guru.store');
+    Route::get('/guru/{id}/edit', function ($id) {
+        $data = User::where('id',$id)->first();
+        return view('admin.pages.update_guru',compact('data'));
+    })->name("admin.guru.edit");
+    Route::put('/guru/{id}', [UserController::class, 'updateGuru'])->name('admin.guru.update');
+    Route::delete('/guru/{id}', [UserController::class, 'deleteGuru'])->name('admin.guru.delete');
+
     Route::get('/kelas', function () {
         return view('admin.pages.kelas');
     })->name("admin.kelas");
