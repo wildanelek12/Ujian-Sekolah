@@ -35,7 +35,13 @@ class KelasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nama' => 'required|max:255',
+        ]);
+        Kelas::create([
+                'nama' => $request->nama,
+        ]);
+        return redirect()->back()->with('success', 'Berhasil Menambahkan Kelas');
     }
 
     /**
@@ -69,7 +75,13 @@ class KelasController extends Controller
      */
     public function update(Request $request, Kelas $kelas)
     {
-        //
+        $validated = $request->validate([
+            'nama' => 'required|max:255',
+        ]);
+        $kelas->update([
+            'nama' => $request->nama,
+        ]);
+        return redirect()->back()->with('success', 'Berhasil Mengupdate Kelas');
     }
 
     /**
@@ -80,6 +92,7 @@ class KelasController extends Controller
      */
     public function destroy(Kelas $kelas)
     {
-        //
+        $kelas->delete();
+        return redirect()->back()->with('success', 'Berhasil Menghapus Data Kelas');
     }
 }

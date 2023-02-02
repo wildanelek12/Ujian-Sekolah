@@ -1,146 +1,139 @@
 @extends('admin.index')
 @section('main')
+    <div class="container-fluid p-0">
+        <div class="row">
+            <div class="col-8 col-xl-8">
+                <div class="card">
+                    <div class="card-header">
+                        @if ($errors->any())
+                            <div class="alert alert-danger alert-dismissible" role="alert">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                <div class="alert-message">
+                                    @foreach ($errors->all() as $error)
+                                        <strong>Warning</strong> {{ $error }} <br>
+                                    @endforeach
 
-<div class="container-fluid p-0">
-
-    {{-- <div class="row justify-content-end">
-        <div class="col-3 text-end">
-            <a class="btn btn-success"><i data-feather="plus-circle"></i> Create</a>
-            <button class="btn btn-success"><i class="fas fa-plus-circle"></i> Create</button>
-        </div>
-    </div> --}}
-
-    {{-- Form Input --}}
-    <div class="row">
-        <div class="col-8 col-xl-8">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Tambahkan Mata Pelajaran</h3>
+                                </div>
+                            </div>
+                        @endif
+                        @if (session('success'))
+                            <div class="alert alert-success alert-dismissible" role="alert">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                                <div class="alert-message">
+                                    <strong>Selamat</strong> {{ session('success') }}<br>
+                                </div>
+                            </div>
+                        @endif
+                        <h3 class="card-title">Tambahkan Mata Pelajaran</h3>
+                    </div>
+                    <div class="card-body">
+                        <form action="{{ route('mapel.store') }}" method="POST">
+                            @csrf
+                            <div class="mb-3">
+                                <label class="form-label">Nama Mata Pelajaran</label>
+                                <input type="text" class="form-control" rows="1" name="nama">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Guru Pengampu</label>
+                                <select class="form-control choices-single" name="user_id">
+                                    @foreach ($gurus as $item)
+                                        <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            {{-- Deskripsi --}}
+                            <div class="mb-3">
+                                <label class="form-label" for="inputUsername">Deskripsi Mata Pelajaran</label>
+                                <textarea rows="3" class="form-control" id="deskripsi" name="deskripsi"
+                                    placeholder="Tuliskan Deskripsi Mata Pelajaran"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" name="tambahkan">Tambahkan</button>
+                        </form>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <form>
-                        <div class="mb-3">
-                            <label class="form-label">Nama Mata Pelajaran</label>
-                            <input type = "text" class="form-control" rows="1" name="nama">
-                        </div>
-                        {{-- Kelas --}}
-                        <div class="mb-3">
-                            <label class="form-label">Kelas</label>
-                            <select class="form-control choices-single" name="kelas">
-                                <option value="">X</option>
-                                <option value="">XI</option>
-                                <option value="">XII</option>
-                            </select>
-                        </div>
-                        {{-- Guru Pengampu --}}
-                        <div class="mb-3">
-                            <label class="form-label">Guru Pengampu</label>
-                            <select class="form-control choices-single" name="user_id">
-                                <optgroup label="Kelas X">
-                                    <option value="">Dr. Sholikin M.Pd</option>
-                                    <option value="">Ahmad Syahroni M.Ag</option>
-                                    <option value="">Khusnul Khatimah S.T, M.Pd</option>
-                                </optgroup>
-                                <optgroup label="Kelas XI">
-                                    <option value="">Tono M.Pd</option>
-                                    <option value="">Drs. Hj. Ilham Nurudin M.Ag</option>
-                                    <option value="">Saifuddin M.T</option>
-                                </optgroup>
-                                <optgroup label="Kelas XII">
-                                    <option value="">Hj. M. Syaifullah M.Pd</option>
-                                    <option value="">Kevin De Bruyne M.Pd</option>
-                                    <option value="">Rossy Valentinudin S.T, M.Pd</option>
-                                </optgroup>
-                            </select>
-                        </div>
-                        {{-- Deskripsi --}}
-                        <div class="mb-3">
-                            <label class="form-label" for="inputUsername">Deskripsi Mata Pelajaran</label>
-                            <textarea rows="3" class="form-control" id="deskripsi" name="deskripsi"
-                                placeholder="Tuliskan Deskripsi Mata Pelajaran"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary" name="tambahkan">Tambahkan</button>
-                    </form>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <table id="datatables-reponsive" class="table table-striped" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Mata Pelajaran</th>
+                                    <th>Guru</th>
+                                    <th>Deskripsi</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($datas as $item)
+                                    <tr>
+                                        <td>{{ $item->nama }}</td>
+                                        <td>{{ $item->guru }}</td>
+                                        <td>{{ $item->deskripsi }}</td>
+                                        <td>
+                                            <a href="{{ route('mapel.edit', ['mapel' => $item->id]) }}"
+                                                class="btn btn-sm btn-primary"><i data-feather="edit-2"></i></a>
+                                            <a data-bs-toggle="modal" data-bs-target="#defaultModalDanger   "
+                                                class="btn btn-sm btn-danger btn-delete" data-id="{{ $item->id }}"><i
+                                                    data-feather="trash-2"></i></i></a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    
-    <div class="row mt-2">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-body">
-                    <table id="datatables-reponsive" class="table table-striped" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th>Mata Pelajaran</th>
-                                <th>Kode</th>
-                                <th>Deskripsi</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Matematika</td>
-                                <td>0001</td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
-                                <td>
-                                    <a href="#" class="btn btn-sm btn-primary"><i data-feather="edit-2"></i></a>
-                                    <a href="#" class="btn btn-sm btn-danger btn-delete" data-id="#"><i data-feather="trash-2"></i></i></a> 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Fisika</td>
-                                <td>0002</td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
-                                <td>
-                                    <a href="#" class="btn btn-sm btn-primary"><i data-feather="edit-2"></i></a>
-                                    <a href="#" class="btn btn-sm btn-danger btn-delete" data-id="#"><i data-feather="trash-2"></i></i></a> 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Sejarah</td>
-                                <td>0021</td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
-                                <td>
-                                    <a href="#" class="btn btn-sm btn-primary"><i data-feather="edit-2"></i></a>
-                                    <a href="#" class="btn btn-sm btn-danger btn-delete" data-id="#"><i data-feather="trash-2"></i></i></a> 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Ekonomi</td>
-                                <td>0022</td>
-                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</td>
-                                <td>
-                                    <a href="#" class="btn btn-sm btn-primary"><i data-feather="edit-2"></i></a>
-                                    <a href="#" class="btn btn-sm btn-danger btn-delete" data-id="#"><i data-feather="trash-2"></i></i></a> 
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+    <div class="modal fade" id="defaultModalDanger" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <form action="" id="delete" method="POST">
+                @csrf
+                @method('DELETE')
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Perhatian</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body m-3">
+                        <p class="mb-0">Apakah anda yakin ingin menghapus data?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-danger">Save changes</button>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
-</div>
 
-<script src="js/app.js"></script>
+    <script src="js/app.js"></script>
 
-<script src="js/datatables.js"></script>
+    <script src="js/datatables.js"></script>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Choices.js
-        new Choices(document.querySelector(".choices-single"));
-    });
-</script>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Datatables Responsive
-        $("#datatables-reponsive").DataTable({
-            responsive: true
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Choices.js
+            new Choices(document.querySelector(".choices-single"));
         });
-    });
-</script>
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Datatables Responsive
+            $("#datatables-reponsive").DataTable({
+                responsive: true
+            });
+            $(".btn-delete").click(function() {
+                var id = $(this).data("id");
+                $("#delete").attr('action', '/admin/mapel/' + id)
+            });
+        });
+    </script>
 @endsection

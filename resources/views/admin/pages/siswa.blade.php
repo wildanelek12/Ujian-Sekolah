@@ -1,142 +1,141 @@
 @extends('admin.index')
 @section('main')
 
-<div class="container-fluid p-0">
+    <div class="container-fluid p-0">
 
-    {{-- Form Input --}}
-    <div class="row">
-        <div class="col-8 col-xl-8">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Tambahkan Siswa</h3>
+        {{-- Form Input --}}
+        <div class="row">
+            <div class="col-8 col-xl-8">
+                <div class="card">
+                    <div class="card-header">
+                        @if ($errors->any())
+                            <div class="alert alert-danger alert-dismissible" role="alert">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                <div class="alert-message">
+                                    @foreach ($errors->all() as $error)
+                                        <strong>Warning</strong> {{ $error }} <br>
+                                    @endforeach
+
+                                </div>
+                            </div>
+                        @endif
+                        @if (session('success'))
+                            <div class="alert alert-success alert-dismissible" role="alert">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                                <div class="alert-message">
+                                    <strong>Selamat</strong> {{ session('success') }}<br>
+                                </div>
+                            </div>
+                        @endif
+                        <h3 class="card-title">Tambahkan Siswa</h3>
+                    </div>
+                    <div class="card-body">
+                        <form action="{{ route('admin.siswa.store') }}" method="POST">
+                            @csrf
+                            <div class="mb-3">
+                                <label class="form-label">Nama</label>
+                                <input type="text" class="form-control" rows="1" name="nama">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">NIS</label>
+                                <input type="text" class="form-control" rows="1" name="nis">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Kelas</label>
+                                <select class="form-control choices-single" name="kelas">
+                                    @foreach ($kelas as $item)
+                                         <option value="{{$item->id}}">{{$item->nama}}</option>
+                                    @endforeach       
+                                    
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary" id="tambahkan"
+                                name="tambahkan">Tambahkan</button>
+                        </form>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <form>
-                        <div class="mb-3">
-                            <label class="form-label">Nama</label>
-                            <input type = "text" class="form-control" rows="1" name="nama">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">NIS</label>
-                            <input type = "text" class="form-control" rows="1" name="nis">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Kelas</label>
-                            <select class="form-control choices-single" name="kelas">
-                                <optgroup label="Kelas X">
-                                    <option value="">X MIPA 1</option>
-                                    <option value="">X MIPA 2</option>
-                                    <option value="">X MIPA 3</option>
-                                    <option value="">X MIPA 4</option>
-                                    <option value="">X MIPA 5</option>
-                                    <option value="">X IPS 1</option>
-                                    <option value="">X IPS 2</option>
-                                    <option value="">X IPS 3</option>
-                                </optgroup>
-                                <optgroup label="Kelas XI">
-                                    <option value="">XI MIPA 1</option>
-                                    <option value="">XI MIPA 2</option>
-                                    <option value="">XI MIPA 3</option>
-                                    <option value="">XI MIPA 4</option>
-                                    <option value="">XI MIPA 5</option>
-                                    <option value="">XI IPS 1</option>
-                                    <option value="">XI IPS 2</option>
-                                    <option value="">XI IPS 3</option>
-                                </optgroup>
-                                <optgroup label="Kelas XII">
-                                    <option value="">XII MIPA 1</option>
-                                    <option value="">XII MIPA 2</option>
-                                    <option value="">XII MIPA 3</option>
-                                    <option value="">XII MIPA 4</option>
-                                    <option value="">XII MIPA 5</option>
-                                    <option value="">XII IPS 1</option>
-                                    <option value="">XII IPS 2</option>
-                                    <option value="">XII IPS 3</option>
-                                </optgroup>
-                            </select>
-                        </div>
-                        <button type="submit" class="btn btn-primary" id="tambahkan" name="tambahkan">Tambahkan</button>
-                    </form>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <table id="datatables-reponsive" class="table table-striped" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Nama</th>
+                                    <th>NIS</th>
+                                    <th>Kelas</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($datas as $item)
+                                    <tr>
+                                        <td>{{$item->nama}}</td>
+                                        <td>{{$item->induk}}</td>
+                                        <td>{{$item->kelas}}</td>
+                                        <td>
+                                            <a href="{{ route('admin.siswa.edit', ['id' => $item->id]) }}"
+                                                class="btn btn-sm btn-primary"><i data-feather="edit-2"></i></a>
+                                            <a data-bs-toggle="modal" data-bs-target="#defaultModalDanger   "
+                                                class="btn btn-sm btn-danger btn-delete" data-id="{{$item->id}}"><i
+                                                    data-feather="trash-2"></i></i></a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    
-    <div class="row mt-2">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-body">
-                    <table id="datatables-reponsive" class="table table-striped" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th>Nama</th>
-                                <th>NIS</th>
-                                <th>Kelas</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Solichul N</td>
-                                <td>16601</td>
-                                <td>X MIPA 1</td>
-                                <td>
-                                    <a href="#" class="btn btn-sm btn-primary"><i data-feather="edit-2"></i></a>
-                                    <a href="#" class="btn btn-sm btn-danger btn-delete" data-id="#"><i data-feather="trash-2"></i></i></a> 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>M Asadi</td>
-                                <td>16602</td>
-                                <td>XI MIPA 1</td>
-                                <td>
-                                    <a href="#" class="btn btn-sm btn-primary"><i data-feather="edit-2"></i></a>
-                                    <a href="#" class="btn btn-sm btn-danger btn-delete" data-id="#"><i data-feather="trash-2"></i></i></a> 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Kenny V</td>
-                                <td>16620</td>
-                                <td>X IPS 1</td>
-                                <td>
-                                    <a href="#" class="btn btn-sm btn-primary"><i data-feather="edit-2"></i></a>
-                                    <a href="#" class="btn btn-sm btn-danger btn-delete" data-id="#"><i data-feather="trash-2"></i></i></a> 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Maulana</td>
-                                <td>16621</td>
-                                <td>X IPS 2</td>
-                                <td>
-                                    <a href="#" class="btn btn-sm btn-primary"><i data-feather="edit-2"></i></a>
-                                    <a href="#" class="btn btn-sm btn-danger btn-delete" data-id="#"><i data-feather="trash-2"></i></i></a> 
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+    <div class="modal fade" id="defaultModalDanger" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <form action="" id="delete" method="POST">
+                @csrf
+                @method('DELETE')
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Perhatian</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body m-3">
+                        <p class="mb-0">Apakah anda yakin ingin menghapus data?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-danger">Save changes</button>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
-</div>
 
-<script src="js/app.js"></script>
+    <script src="js/app.js"></script>
 
-<script src="js/datatables.js"></script>
+    <script src="js/datatables.js"></script>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Choices.js
-        new Choices(document.querySelector(".choices-single"));
-    });
-</script>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Datatables Responsive
-        $("#datatables-reponsive").DataTable({
-            responsive: true
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Choices.js
+            new Choices(document.querySelector(".choices-single"));
         });
-    });
-</script>
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Datatables Responsive
+            $("#datatables-reponsive").DataTable({
+                responsive: true
+            });
+            $(".btn-delete").click(function() {
+                var id = $(this).data("id") ;
+                $("#delete").attr('action','/admin/siswa/'+id)
+            });
+        });
+    </script>
 @endsection

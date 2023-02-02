@@ -77,8 +77,8 @@
             </li>
 
             {{-- Mata Pelajaran --}}
-            <li class="sidebar-item @if(request()->routeIs('admin.mapel')) active @endif">
-                <a class="sidebar-link" href="{{route('admin.mapel')}}">
+            <li class="sidebar-item @if(request()->routeIs('mapel.index')) active @endif">
+                <a class="sidebar-link" href="{{route('mapel.index')}}">
                     <i class="align-middle" data-feather="credit-card"></i> <span class="align-middle">Mata Pelajaran</span>
                 </a>
             </li>

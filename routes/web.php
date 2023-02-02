@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\KelasController;
+use App\Http\Controllers\MapelController;
 use App\Http\Controllers\SoalController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\Guru;
+use App\Models\Kelas;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -72,17 +75,46 @@ Route::group([
     Route::put('/guru/{id}', [UserController::class, 'updateGuru'])->name('admin.guru.update');
     Route::delete('/guru/{id}', [UserController::class, 'deleteGuru'])->name('admin.guru.delete');
 
-    Route::get('/kelas', function () {
-        return view('admin.pages.kelas');
-    })->name("admin.kelas");
 
-    Route::get('/mapel', function () {
-        return view('admin.pages.mapel');
-    })->name("admin.mapel");
+    Route::get('/kelas', function () {
+        $kelas = Kelas::all();
+        $total_kelas = [];
+        foreach ($kelas as $key) {
+            $total_user = User::where('kelas_id',$key->id)->count();
+            $total_kelas[$key->id] = $total_user;
+        }
+        return view('admin.pages.kelas',compact('kelas','total_kelas'));
+    })->name("admin.kelas");
+    Route::post('/kelas', [KelasController::class, 'store'])->name('admin.kelas.store');
+    Route::get('/kelas/{id}/edit', function ($id) {
+        $data = Kelas::where('id', $id)->first();
+        return view('admin.pages.update_kelas', compact('data'));
+    })->name("admin.kelas.edit");
+    Route::put('/kelas/{kelas}', [KelasController::class, 'update'])->name('admin.kelas.update');
+    Route::delete('/kelas/{kelas}', [KelasController::class, 'destroy'])->name('admin.kelas.delete');
+
 
     Route::get('/siswa', function () {
-        return view('admin.pages.siswa');
+        $datas = User::where('role', 3)
+        ->join("kelas",'users.kelas_id','=','kelas.id')    
+        ->select("users.*","kelas.nama as kelas")
+        ->get();
+        $kelas = Kelas::all();
+        return view('admin.pages.siswa', compact('datas','kelas'));
     })->name("admin.siswa");
+    Route::post('/siswa', [UserController::class, 'createSiswa'])->name('admin.siswa.store');
+    Route::get('/siswa/{id}/edit', function ($id) {
+        $data = User::where('id', $id)->first();
+        $kelas = Kelas::all();
+        return view('admin.pages.update_siswa', compact('data','kelas'));
+    })->name("admin.siswa.edit");
+    Route::put('/siswa/{id}', [UserController::class, 'updateSiswa'])->name('admin.siswa.update');
+    Route::delete('/siswa/{id}', [UserController::class, 'deleteSiswa'])->name('admin.siswa.delete');
+
+
+    Route::resource('/mapel', MapelController::class);
+
+
 
     Route::get('/ujian', function () {
         return view('admin.pages.ujian');
