@@ -51,3 +51,7 @@ Route::get('/kerjakan', function () {
 Route::get('/dashboardGuru', function () {
     return view('guru.pages.dashboardGuru');
 })->name("dashboardg");
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
