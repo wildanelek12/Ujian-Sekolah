@@ -1,5 +1,13 @@
 @extends('guru.index')
 @section('main')
+
+    <div class="row justify-content-end">
+        <div class="col-3 text-end">
+            {{-- <a class="btn btn-success"><i data-feather="plus-circle"></i> Create</a> --}}
+            <a href="{{route('guru.create')}}"><button class="btn btn-success"><i class="fas fa-plus-circle"></i> Tambahkan</button></a>
+        </div>
+    </div>
+
     <div class="row mt-2">
         <div class="col-12">
             <div class="card">
@@ -8,8 +16,14 @@
                         <thead>
                             <tr>
                                 <th>Mata Pelajaran</th>
-                                <th>Kode Ujian</th>
-                                <th>Kelas</th>
+                                <th>ID</th>
+                                <th>Soal</th>
+                                <th>Opsi A</th>
+                                <th>Opsi B</th>
+                                <th>Opsi C</th>
+                                <th>Opsi D</th>
+                                <th>Opsi E</th>
+                                <th>Kunci Jawaban</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -17,25 +31,17 @@
                             <tr>
                                 <td>Matematika</td>
                                 <td>fca311</td>
-                                <td>X</td>
+                                <td>Berapa Ukuran Rumah Pak Tri?</td>
+                                <td>Gedhe</td>
+                                <td>Biasa Aja</td>
+                                <td>Gedhe Banget</td>
+                                <td>Kecil</td>
+                                <td>Agak Gedhe</td>
+                                <td>C</td>
                                 <td>
-                                    <a href="#" class="btn btn-sm btn-primary"><i data-feather="eye"></i> Lihat</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Matematika</td>
-                                <td>da2531</td>
-                                <td>XI</td>
-                                <td>
-                                    <a href="#" class="btn btn-sm btn-primary"><i data-feather="eye"></i> Lihat</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Matematika</td>
-                                <td>14213d</td>
-                                <td>XII</td>
-                                <td>
-                                    <a href="#" class="btn btn-sm btn-primary"><i data-feather="eye"></i> Lihat</a>
+                                    <a href="#" class="btn btn-sm btn-primary"><i data-feather="edit-2"></i></a>
+                                        <a href="#" class="btn btn-sm btn-danger btn-delete" data-id="#"><i
+                                                data-feather="trash-2"></i></i></a>
                                 </td>
                             </tr>
                         </tbody>
@@ -43,10 +49,6 @@
                 </div>
             </div>
         </div>
-    </div>
-<hr>
-    <div class="row">
-        
     </div>
 
     

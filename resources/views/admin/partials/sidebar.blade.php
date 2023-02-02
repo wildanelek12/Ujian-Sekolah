@@ -61,6 +61,13 @@
                     <i class="align-middle" data-feather="user"></i> <span class="align-middle">Data Guru</span>
                 </a>
             </li>
+            
+            {{-- Data Kelas --}}
+            <li class="sidebar-item @if(request()->routeIs('admin.kelas')) active @endif">
+                <a class="sidebar-link" href="{{route('admin.kelas')}}">
+                    <i class="align-middle" data-feather="list"></i> <span class="align-middle">Kelas</span>
+                </a>
+            </li>
 
             {{-- Data Siswa --}}
             <li class="sidebar-item @if(request()->routeIs('admin.siswa')) active @endif">
@@ -76,12 +83,6 @@
                 </a>
             </li>
 
-            {{-- Data Kelas --}}
-            <li class="sidebar-item @if(request()->routeIs('admin.kelas')) active @endif">
-                <a class="sidebar-link" href="{{route('admin.kelas')}}">
-                    <i class="align-middle" data-feather="list"></i> <span class="align-middle">Kelas</span>
-                </a>
-            </li>
 
             {{-- Data Ujian --}}
             <li class="sidebar-item @if(request()->routeIs('admin.ujian')) active @endif">
