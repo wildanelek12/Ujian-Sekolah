@@ -19,7 +19,7 @@
 
                     {{-- Button --}}
                     <div class="text-end">
-                        <button class="btn btn-pill btn-primary">Kerjakan</button>
+                        <button class="btn btn-pill btn-primary">Upload Soal</button>
                     </div>
                 </div>  
             </div>

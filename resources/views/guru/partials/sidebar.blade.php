@@ -45,8 +45,8 @@
                 Pages
             </li>
             {{-- Dashboard --}}
-            <li class="sidebar-item @if(request()->routeIs('dashboards')) active @endif">
-                <a class="sidebar-link" href="{{route('dashboards')}}">
+            <li class="sidebar-item @if(request()->routeIs('dashboardg')) active @endif">
+                <a class="sidebar-link" href="{{route('dashboardg')}}">
                     <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
                 </a>
             </li>

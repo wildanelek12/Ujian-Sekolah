@@ -47,3 +47,7 @@ Route::get('/dashboardSiswa', function () {
 Route::get('/kerjakan', function () {
     return view('siswa.pages.kerjakan');
 })->name("kerjakan");
+
+Route::get('/dashboardGuru', function () {
+    return view('guru.pages.dashboardGuru');
+})->name("dashboardg");
