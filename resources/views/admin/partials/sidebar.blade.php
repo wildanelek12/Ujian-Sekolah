@@ -45,43 +45,43 @@
                 Pages
             </li>
             {{-- Dashboard --}}
-            <li class="sidebar-item @if(request()->routeIs('dashboard')) active @endif">
-                <a class="sidebar-link" href="{{route('dashboard')}}">
+            <li class="sidebar-item @if(request()->routeIs('admin.dashboard')) active @endif">
+                <a class="sidebar-link" href="{{route('admin.dashboard')}}">
                     <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
                 </a>
             </li>
 
             {{-- Data Guru --}}
-            <li class="sidebar-item @if(request()->routeIs('guru')) active @endif">
-                <a class="sidebar-link" href="{{route('guru')}}">
+            <li class="sidebar-item @if(request()->routeIs('admin.guru')) active @endif">
+                <a class="sidebar-link" href="{{route('admin.guru')}}">
                     <i class="align-middle" data-feather="user"></i> <span class="align-middle">Data Guru</span>
                 </a>
             </li>
 
             {{-- Data Siswa --}}
-            <li class="sidebar-item @if(request()->routeIs('siswa')) active @endif">
-                <a class="sidebar-link" href="{{route('siswa')}}">
+            <li class="sidebar-item @if(request()->routeIs('admin.siswa')) active @endif">
+                <a class="sidebar-link" href="{{route('admin.siswa')}}">
                     <i class="align-middle" data-feather="users"></i> <span class="align-middle">Data Siswa</span>
                 </a>
             </li>
 
             {{-- Mata Pelajaran --}}
-            <li class="sidebar-item @if(request()->routeIs('mapel')) active @endif">
-                <a class="sidebar-link" href="{{route('mapel')}}">
+            <li class="sidebar-item @if(request()->routeIs('admin.mapel')) active @endif">
+                <a class="sidebar-link" href="{{route('admin.mapel')}}">
                     <i class="align-middle" data-feather="credit-card"></i> <span class="align-middle">Mata Pelajaran</span>
                 </a>
             </li>
 
             {{-- Data Kelas --}}
-            <li class="sidebar-item @if(request()->routeIs('kelas')) active @endif">
-                <a class="sidebar-link" href="{{route('kelas')}}">
+            <li class="sidebar-item @if(request()->routeIs('admin.kelas')) active @endif">
+                <a class="sidebar-link" href="{{route('admin.kelas')}}">
                     <i class="align-middle" data-feather="list"></i> <span class="align-middle">Kelas</span>
                 </a>
             </li>
 
             {{-- Data Ujian --}}
-            <li class="sidebar-item @if(request()->routeIs('ujian')) active @endif">
-                <a class="sidebar-link" href="{{route('ujian')}}">
+            <li class="sidebar-item @if(request()->routeIs('admin.ujian')) active @endif">
+                <a class="sidebar-link" href="{{route('admin.ujian')}}">
                     <i class="align-middle" data-feather="calendar"></i> <span class="align-middle">Data Ujian</span>
                 </a>
             </li>

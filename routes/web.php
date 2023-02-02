@@ -14,41 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.pages.dashboard');
-})->name("dashboard");
 
-Route::get('/guru', function () {
-    return view('admin.pages.guru');
-})->name("guru");
 
-Route::get('/kelas', function () {
-    return view('admin.pages.kelas');
-})->name("kelas");
 
-Route::get('/mapel', function () {
-    return view('admin.pages.mapel');
-})->name("mapel");
-
-Route::get('/siswa', function () {
-    return view('admin.pages.siswa');
-})->name("siswa");
-
-Route::get('/ujian', function () {
-    return view('admin.pages.ujian');
-})->name("ujian");
 
 
 Route::get('/soal', [SoalController::class, 'index']);
 
 
-Route::get('/kerjakan', function () {
-    return view('siswa.pages.kerjakan');
-})->name("kerjakan");
 
-Route::get('/dashboardGuru', function () {
-    return view('guru.pages.dashboardGuru');
-})->name("dashboardg");
+
+
 
 Auth::routes();
 
@@ -59,7 +35,50 @@ Route::group([
     Route::get('/', function () {
         return view('siswa.pages.dashboardSiswa');
     })->name("siswa.dashboard");
+
+    Route::get('/kerjakan', function () {
+        return view('siswa.pages.kerjakan');
+    })->name("kerjakan");
   
-  });
+});
+
+Route::group([
+    'prefix'      => 'guru',
+  ], function () {
+    Route::get('/', function () {
+        return view('guru.pages.dashboardGuru');
+    })->name("guru.dashboard");
+    
+  
+});
+
+Route::group([
+    'prefix'      => 'admin',
+  ], function () {
+    Route::get('/', function () {
+        return view('admin.pages.dashboard');
+    })->name("admin.dashboard");
+    Route::get('/guru', function () {
+        return view('admin.pages.guru');
+    })->name("admin.guru");
+    
+    Route::get('/kelas', function () {
+        return view('admin.pages.kelas');
+    })->name("admin.kelas");
+    
+    Route::get('/mapel', function () {
+        return view('admin.pages.mapel');
+    })->name("admin.mapel");
+    
+    Route::get('/siswa', function () {
+        return view('admin.pages.siswa');
+    })->name("admin.siswa");
+    
+    Route::get('/ujian', function () {
+        return view('admin.pages.ujian');
+    })->name("admin.ujian");
+  
+});
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
