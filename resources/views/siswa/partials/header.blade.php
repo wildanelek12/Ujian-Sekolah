@@ -19,6 +19,8 @@
                     <img src="img/avatars/avatar.jpg" class="avatar img-fluid rounded" alt="Charles Hall" />
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
+                    <a class="dropdown-item" href="#">Ubah Password</a>
+                    <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="#">Log out</a>
                 </div>
             </li>
