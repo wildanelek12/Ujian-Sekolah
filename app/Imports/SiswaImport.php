@@ -14,13 +14,11 @@ class SiswaImport implements ToModel, WithHeadingRow
      */
     function getKelas($nama)
     {
-        return Kelas::where('nama', $nama)->first()->id;
+        $kelas = Kelas::where('nama', $nama)->first();
+        return $kelas->id;
     }
     public function model(array $row)
     {
-
-
-
         return new User([
             'nama' => $row['nama'],
             'induk' => $row['nis'],

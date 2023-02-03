@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\SoalImport;
 use App\Models\Soal;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SoalController extends Controller
 {
     public function index()
     {
         $soals = Soal::get();
-        return view('soal',compact('soals'));
+        return view('soal', compact('soals'));
     }
 
     /**
@@ -29,11 +31,46 @@ class SoalController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        $validated = $request->validate([
+            'soal' => 'required',
+            'opsi_a' => 'required',
+            'opsi_b' => 'required',
+            'opsi_c' => 'required',
+            'opsi_d' => 'required',
+            'opsi_e' => 'required',
+        ]);
+        Soal::create([
+            'soal' =>  $request->soal,
+            'opsi_a' =>  $request->opsi_a,
+            'opsi_b' =>  $request->opsi_b,
+            'opsi_c' =>  $request->opsi_c,
+            'opsi_d' =>  $request->opsi_d,
+            'opsi_e' =>  $request->opsi_e,
+            'mapel_id'  => $id,
+            'key'   => $request->key
+        ]);
+        return redirect()->back()->with('success', 'Berhasil Menambahkan Soal');;
     }
+    public function createSoalFromExcel(Request $request)
+    {
+        $validated = $request->validate([
+            'file' => 'required|mimes:csv,xls,xlsx'
+        ]);
+        $file = $request->file('file');
 
+        // membuat nama file unik
+        $nama_file = rand() . $file->getClientOriginalName();
+
+        // upload ke folder file_siswa di dalam folder public
+        $file->move('file_soal', $nama_file);
+
+        // import data
+        Excel::import(new SoalImport($request->mapel_id), public_path('/file_soal/' . $nama_file));
+
+        return redirect()->back()->with('success', 'Berhasil Menambahkan Soal');
+    }
     /**
      * Display the specified resource.
      *

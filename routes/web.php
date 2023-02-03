@@ -7,6 +7,7 @@ use App\Http\Controllers\UjianController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\Guru;
 use App\Models\Kelas;
+use App\Models\Mapel;
 use App\Models\Soal;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -47,17 +48,22 @@ Route::group([
     'middleware' => 'guru'
 ], function () {
     Route::get('/', function () {
-        return view('guru.pages.dashboardGuru');
+        $datas = Mapel::where('user_id', Auth::user()->id)->get();
+        return view('guru.pages.dashboard', compact('datas'));
     })->name("guru.dashboard");
-    Route::get('/list', function () {
-        return view('guru.pages.list_soal');
-    })->name("guru.list");
+    Route::get('/mapel/{id}', function ($id) {
+        $datas = Soal::where('mapel_id', $id)->get();
+        return view('guru.pages.list_soal', compact('datas', 'id'));
+    })->name("guru.listSoal");
+    Route::post('/soal/import-excel', [SoalController::class, 'createSoalFromExcel'])->name('guru.soal.storeExcel');
     Route::get('/hasil', function () {
         return view('guru.pages.hasil_ujian');
     })->name("guru.hasil");
-    Route::get('/create', function () {
-        return view('guru.pages.create_soal');
+    Route::get('/mapel/{id}/create', function ($id) {
+        return view('guru.pages.create_soal', compact('id'));
     })->name("guru.create");
+    Route::post('/mapel/{id}', [SoalController::class, 'store'])->name('guru.soal.store');
+
     Route::get('/update', function () {
         return view('guru.pages.update_soal');
     })->name("guru.update");
