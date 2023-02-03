@@ -113,9 +113,6 @@
         </div>
     </div>
 
-    <script src="js/app.js"></script>
-
-    <script src="js/datatables.js"></script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {

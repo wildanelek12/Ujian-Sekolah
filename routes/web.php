@@ -3,9 +3,11 @@
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\MapelController;
 use App\Http\Controllers\SoalController;
+use App\Http\Controllers\UjianController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\Guru;
 use App\Models\Kelas;
+use App\Models\Soal;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -109,6 +111,7 @@ Route::group([
         return view('admin.pages.siswa', compact('datas', 'kelas'));
     })->name("admin.siswa");
     Route::post('/siswa', [UserController::class, 'createSiswa'])->name('admin.siswa.store');
+    Route::post('/siswa/import-excel', [UserController::class, 'createSiswaFromExcel'])->name('admin.siswa.storeExcel');
     Route::get('/siswa/{id}/edit', function ($id) {
         $data = User::where('id', $id)->first();
         $kelas = Kelas::all();
@@ -118,19 +121,20 @@ Route::group([
     Route::delete('/siswa/{id}', [UserController::class, 'deleteSiswa'])->name('admin.siswa.delete');
 
 
+
     Route::resource('/mapel', MapelController::class);
-
-
-
-    Route::get('/ujian', function () {
-        return view('admin.pages.ujian');
-    })->name("admin.ujian");
+    Route::resource('/ujian', UjianController::class);
 });
 
 
-Route::get('/test', function () {
-    return view('admin.pages.ujian');
-})->name("admin.ujian");
+// Route::get('/test', function () {
+//     dd(bcrypt("12345678"));
+// })->name("admin.ujian");
+
+// Route::get('/soal', function () {
+//     $soals = Soal::all();
+//     return view('soal', compact('soals'));
+// })->name("admin.ujian");
 
 Auth::routes();
 
