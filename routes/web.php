@@ -49,6 +49,9 @@ Route::group([
     Route::get('/', function () {
         return view('guru.pages.dashboardGuru');
     })->name("guru.dashboard");
+    Route::get('/list', function () {
+        return view('guru.pages.list_soal');
+    })->name("guru.list");
     Route::get('/hasil', function () {
         return view('guru.pages.hasil_ujian');
     })->name("guru.hasil");

@@ -382,8 +382,13 @@
     </div>
 </div>
 
-<div class="row justify-content-end">
-    <div class="col-3 text-end">
+{{-- Button --}}
+
+<div class="row">
+    <div class="col-6">
+        <a href="{{route('guru.list')}}"><button class="btn btn-primary">Kembali</button></a>
+    </div>
+    <div class="col-6 text-end">
         <a href="{{route('guru.dashboard')}}"><button class="btn btn-danger"><i class=""></i> Upload File</button></a>
         <a href="{{route('guru.dashboard')}}"><button class="btn btn-success"><i class=""></i> Tambahkan</button></a>
     </div>
