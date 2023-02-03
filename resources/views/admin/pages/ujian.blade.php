@@ -130,17 +130,13 @@
             });
             $("#duration").on("input", function() {
                 durasi = $("#duration").val();
-                console.log('====================================');
                 var date = new Date(waktu_mulai);
                 date.setMinutes(date.getMinutes()+durasi); 
-                console.log(date);
-                console.log('====================================');
                 flatpickr("#waktu_selesai", {
                     enableTime: true,
                     dateFormat: "Y-m-d H:i",
                     time_24hr: true,
                     defaultDate : date
-
                 });
             });
 
