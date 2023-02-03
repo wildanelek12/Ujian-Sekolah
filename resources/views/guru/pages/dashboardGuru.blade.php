@@ -1,55 +1,80 @@
 @extends('guru.index')
 @section('main')
 
-    <div class="row justify-content-end">
-        <div class="col-3 text-end">
-            {{-- <a class="btn btn-success"><i data-feather="plus-circle"></i> Create</a> --}}
-            <a href="{{route('guru.create')}}"><button class="btn btn-success"><i class="fas fa-plus-circle"></i> Tambahkan</button></a>
-        </div>
-    </div>
-
-    <div class="row mt-2">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-body">
-                    <table id="datatables-reponsive" class="table table-striped" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th>Mata Pelajaran</th>
-                                <th>ID</th>
-                                <th>Soal</th>
-                                <th>Opsi A</th>
-                                <th>Opsi B</th>
-                                <th>Opsi C</th>
-                                <th>Opsi D</th>
-                                <th>Opsi E</th>
-                                <th>Kunci Jawaban</th>
-                                <th>Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Matematika</td>
-                                <td>fca311</td>
-                                <td>Berapa Ukuran Rumah Pak Tri?</td>
-                                <td>Gedhe</td>
-                                <td>Biasa Aja</td>
-                                <td>Gedhe Banget</td>
-                                <td>Kecil</td>
-                                <td>Agak Gedhe</td>
-                                <td>C</td>
-                                <td>
-                                    <a href="{{route('guru.update')}}" class="btn btn-sm btn-primary"><i data-feather="edit-2"></i></a>
-                                        <a href="#" class="btn btn-sm btn-danger btn-delete" data-id="#"><i
-                                                data-feather="trash-2"></i></i></a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+<div class="row">
+    <div class="col-12 col-md-6 col-lg-3">
+        <div class="card">
+            <div class="card-header px-4 pt-4">
+                {{-- Title dan Status Ujian --}}
+                <h5 class="card-title mb-0">Matematika X</h5>
+                <div class="badge bg-warning my-2">Soal Terupload</div>
             </div>
+            {{-- Deskripsi Ujian --}}
+            <div class="card-body px-4 pt-2">
+                <p>Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque
+                    sed ipsum.</p>
+
+                <div class="text-end">
+                    <p>90 menit</p>
+                </div>
+
+                {{-- Button --}}
+                <div class="text-end">
+                    <a href="{{route('guru.list')}}"><button class="btn btn-pill btn-primary">Unggah Soal</button></a>
+                </div>
+            </div>  
         </div>
     </div>
+    <div class="col-12 col-md-6 col-lg-3">
+        <div class="card">
+            <div class="card-header px-4 pt-4">
+                {{-- Title dan Status Ujian --}}
+                <h5 class="card-title mb-0">Matematika XI</h5>
+                <div class="badge bg-danger my-2">Belum Ada Soal!</div>
+            </div>
+            {{-- Deskripsi Ujian --}}
+            <div class="card-body px-4 pt-2">
+                <p>Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque
+                    sed ipsum.</p>
+
+                <div class="text-end">
+                    <p>90 menit</p>
+                </div>
+
+                {{-- Button --}}
+                <div class="text-end">
+                    <button class="btn btn-pill btn-primary" disabled>Unggah Soal</button>
+                </div>
+            </div>  
+        </div>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-12 col-md-6 col-lg-3">
+        <div class="card">
+            <div class="card-header px-4 pt-4">
+                {{-- Title dan Status Ujian --}}
+                <h5 class="card-title mb-0">Matematika XII</h5>
+                <div class="badge bg-success my-2">Ujian Selesai</div>
+            </div>
+            {{-- Deskripsi Ujian --}}
+            <div class="card-body px-4 pt-2">
+                <p>Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque
+                    sed ipsum.</p>
+
+                <div class="text-end">
+                    <p>60 menit</p>
+                </div>
+
+                {{-- Button --}}
+                <div class="text-end">
+                    <button class="btn btn-pill btn-primary" disabled>Unggah Soal</button>
+                </div>
+            </div>  
+        </div>
+    </div>
+</div>
 
     
 @endsection
