@@ -11,6 +11,7 @@ use App\Models\Mapel;
 use App\Models\Soal;
 use App\Models\Ujian;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -53,8 +54,8 @@ Route::group([
         return view('siswa.pages.dashboard', compact('datas', 'durasi'));
     })->name("siswa.dashboard");
 
-    Route::get('/ujian/{id}', function ($id) {
-        $datas = Soal::where('mapel_id', $id)->get();
+    Route::get('/ujian/{url}', function (Request $request,$url) {
+        $datas = Soal::where('mapel_id', $request->id)->get();
         return view('siswa.pages.soal', compact('datas'));
     })->name("siswa.ujian");
 

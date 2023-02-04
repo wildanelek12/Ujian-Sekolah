@@ -36,7 +36,8 @@
                                 <label class="form-label">Mata Pelajaran</label>
                                 <select class="form-control choices-single" name="mapel_id">
                                     @foreach ($mapel as $item)
-                                        <option value="{{ $item->id }}">{{ $item->nama }}</option>
+
+                                        <option value="{!!$item->id !!}">{!!$item->id !!}</option>
                                     @endforeach
                                 </select>
                             </div>
