@@ -43,7 +43,7 @@
                                     <td>{!! $item->opsi_c !!}</td>
                                     <td>{!! $item->opsi_d !!}</td>
                                     <td>{!! $item->opsi_e !!}</td>
-                                    <td>{ $item->key }}</td>
+                                    <td>{{ $item->key }}</td>
                                     <td>
                                         <a href="{{ route('guru.update') }}" class="btn btn-sm btn-primary"><i
                                                 data-feather="edit-2"></i></a>

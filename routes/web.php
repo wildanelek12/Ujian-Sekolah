@@ -9,6 +9,7 @@ use App\Http\Middleware\Guru;
 use App\Models\Kelas;
 use App\Models\Mapel;
 use App\Models\Soal;
+use App\Models\Ujian;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -35,8 +36,27 @@ Route::group([
     'middleware' => 'siswa'
 ], function () {
     Route::get('/', function () {
-        return view('siswa.pages.dashboardSiswa');
+        $datas = Ujian::where('kelas_id', Auth::user()->kelas_id)
+            ->join('mapels', 'ujians.mapel_id', '=', 'mapels.id')
+            ->select('ujians.*', 'mapels.nama as mapel', 'mapels.deskripsi as deskripsi')
+            ->get();
+        $durasi = [];
+        foreach ($datas as $key) {
+            $waktu_mulai = new DateTime($key->waktu_mulai);
+            $waktu_selesai = new DateTime($key->waktu_selesai);
+            $interval = $waktu_selesai->diff($waktu_mulai);
+            $min = $interval->days * 24 * 60;
+            $min += $interval->h * 60;
+            $min += $interval->i;
+            $durasi[$key->id] = $min;
+        }
+        return view('siswa.pages.dashboard', compact('datas', 'durasi'));
     })->name("siswa.dashboard");
+
+    Route::get('/ujian/{id}', function ($id) {
+        $datas = Soal::where('mapel_id', $id)->get();
+        return view('siswa.pages.soal', compact('datas'));
+    })->name("siswa.ujian");
 
     Route::get('/kerjakan', function () {
         return view('siswa.pages.kerjakan');
@@ -147,4 +167,6 @@ Route::group([
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', function () {
+    return view('auth.login');
+});

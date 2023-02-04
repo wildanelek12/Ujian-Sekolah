@@ -63,7 +63,7 @@
     <script>
         $(document).ready(function() {
             var index = 0;
-            var soal = @json($soals);
+            var soal = @json($datas);
             let containerNavSoal = "";
             let answer = [];
 
@@ -129,10 +129,10 @@
                     console.log("ini jawaban anda : " + answer[i]);
 
 
-                    if (soal[i].key == answer[i]) {
+                    if (soal[i].key.toLowerCase() == answer[i]) {
                         nilai += point;
-                    } else if (answer[i]==null) {
-                        nilai+=0
+                    } else if (answer[i] == null) {
+                        nilai += 0
                     } else {
                         nilai += 0;
                     }

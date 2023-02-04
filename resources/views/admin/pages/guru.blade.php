@@ -111,29 +111,7 @@
             </form>
         </div>
     </div>
-    <div class="modal fade" id="modalUploadSoal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <form action="{{ route('admin.siswa.storeExcel') }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Perhatian</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body m-3">
-                        <div class="mb-3">
-                            <label class="form-label w-100">Upload Data Soal</label>
-                            <input class="form-control" name="file" type="file" required>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
+    
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
