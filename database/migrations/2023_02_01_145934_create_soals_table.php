@@ -17,12 +17,12 @@ class CreateSoalsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('mapel_id');
             $table->foreign('mapel_id')->references('id')->on('mapels');
-            $table->text('soal');
-            $table->text('opsi_a');
-            $table->text('opsi_b');
-            $table->text('opsi_c');
-            $table->text('opsi_d');
-            $table->text('opsi_e');
+            $table->longText('soal');
+            $table->longText('opsi_a');
+            $table->longText('opsi_b');
+            $table->longText('opsi_c');
+            $table->longText('opsi_d');
+            $table->longText('opsi_e');
             $table->string('key');
             $table->timestamps();
         });

@@ -20,8 +20,12 @@
 
                         {{-- Button --}}
                         <div class="text-end">
-                            <a href="{{ route('siswa.ujian', ['id' => $item->id]) }}"><button
-                                    class="btn btn-pill btn-primary">Kerjakan</button></a>
+                            <form action="{{ route('siswa.ujian', ['url' => $item->url]) }}" >
+                                <input type="hidden" value="{{ $item->id }}"  name="id"/>
+                                <button type="submit"
+                                        class="btn btn-pill btn-primary">Kerjakan</button>
+                                
+                            </form>
                         </div>
                     </div>
                 </div>

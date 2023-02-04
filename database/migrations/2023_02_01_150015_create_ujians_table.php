@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class CreateUjiansTable extends Migration
@@ -21,6 +22,7 @@ class CreateUjiansTable extends Migration
             $table->dateTime('waktu_selesai');
             $table->unsignedBigInteger('kelas_id');
             $table->foreign('kelas_id')->references('id')->on('kelas');
+            $table->uuid('url')->default(DB::raw('(UUID())'));;
             $table->string('token');
             $table->timestamps();
         });
