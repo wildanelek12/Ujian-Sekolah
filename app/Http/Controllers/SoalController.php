@@ -51,7 +51,7 @@ class SoalController extends Controller
             'mapel_id'  => $id,
             'key'   => $request->key
         ]);
-        return redirect()->back()->with('success', 'Berhasil Menambahkan Soal');;
+        return redirect()->back()->with('success', 'Berhasil Menambahkan Soal');
     }
     public function createSoalFromExcel(Request $request)
     {

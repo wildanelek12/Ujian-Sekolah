@@ -35,7 +35,12 @@ class ResultController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Result::create([
+            'ujian_id' => $request->ujian_id,
+            'user_id' => $request->user_id,
+            'nilai' => $request->nilai,
+        ]);
+        return redirect()->route('siswa.dashboard')->with('success', 'Ujian telah selesai, jawaban telah terkirim');
     }
 
     /**

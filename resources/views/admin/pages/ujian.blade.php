@@ -37,7 +37,7 @@
                                 <select class="form-control choices-single" name="mapel_id">
                                     @foreach ($mapel as $item)
 
-                                        <option value="{!!$item->id !!}">{!!$item->id !!}</option>
+                                        <option value="{!!$item->id !!}">{!!$item->nama !!}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -144,15 +144,17 @@
                 },
 
             });
+
             $("#duration").on("input", function() {
                 durasi = $("#duration").val();
                 var date = new Date(waktu_mulai);
-                date.setMinutes(date.getMinutes() + durasi);
+                var newDateObj = moment(date).add(durasi, 'm').toDate();
+    
                 flatpickr("#waktu_selesai", {
                     enableTime: true,
                     dateFormat: "Y-m-d H:i",
                     time_24hr: true,
-                    defaultDate: date
+                    defaultDate: newDateObj
                 });
             });
 

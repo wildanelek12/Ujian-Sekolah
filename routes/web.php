@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\MapelController;
+use App\Http\Controllers\ResultController;
 use App\Http\Controllers\SoalController;
 use App\Http\Controllers\UjianController;
 use App\Http\Controllers\UserController;
@@ -39,6 +40,7 @@ Route::group([
     Route::get('/', function () {
         $datas = Ujian::where('kelas_id', Auth::user()->kelas_id)
             ->join('mapels', 'ujians.mapel_id', '=', 'mapels.id')
+            ->leftJoin('results', 'results.ujian_id', '=', 'ujians.id')
             ->select('ujians.*', 'mapels.nama as mapel', 'mapels.deskripsi as deskripsi')
             ->get();
         $durasi = [];
@@ -56,12 +58,13 @@ Route::group([
 
     Route::get('/ujian/{url}', function (Request $request,$url) {
         $datas = Soal::where('mapel_id', $request->id)->get();
-        return view('siswa.pages.soal', compact('datas'));
+        $waktu_mulai = $request->waktu_mulai;
+        $waktu_selesai = $request->waktu_selesai;
+        $ujian_id = $request->ujian_id;
+        return view('siswa.pages.soal', compact('datas','waktu_mulai','waktu_selesai','ujian_id'));
     })->name("siswa.ujian");
 
-    Route::get('/kerjakan', function () {
-        return view('siswa.pages.kerjakan');
-    })->name("kerjakan");
+    Route::post('/ujian', [ResultController::class, 'store'])->name('siswa.result.store');
 });
 
 Route::group([
