@@ -85,9 +85,13 @@ Route::group([
     })->name("guru.create");
     Route::post('/mapel/{id}', [SoalController::class, 'store'])->name('guru.soal.store');
 
-    Route::get('/update', function () {
-        return view('guru.pages.update_soal');
-    })->name("guru.update");
+    Route::get('/mapel/{id}/edit', function ($id) {
+        $data = Soal::where('id', $id)->first();
+        return view('guru.pages.update_soal',compact('data'));
+    })->name("guru.edit");
+    Route::put('/mapel/soal/{soal}', [SoalController::class, 'update'])->name('guru.soal.update');
+    Route::delete('/mapel/soal/{soal}', [SoalController::class, 'destroy'])->name('guru.soal.delete');
+
     Route::get('/view', function () {
         return view('guru.pages.lihat_hasil');
     })->name("guru.view");
@@ -170,4 +174,4 @@ Auth::routes();
 
 Route::get('/', function () {
     return view('auth.login');
-});
+})->middleware('guest');

@@ -36,7 +36,7 @@ class KelasController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'nama' => 'required|max:255',
+            'nama' => 'required|max:255|unique:kelas,nama',
         ]);
         Kelas::create([
                 'nama' => $request->nama,

@@ -45,9 +45,10 @@
                                     <td>{!! $item->opsi_e !!}</td>
                                     <td>{{ $item->key }}</td>
                                     <td>
-                                        <a href="{{ route('guru.update') }}" class="btn btn-sm btn-primary"><i
-                                                data-feather="edit-2"></i></a>
-                                        <a href="#" class="btn btn-sm btn-danger btn-delete" data-id="#"><i
+                                        <a href="{{ route('guru.edit', ['id' => $item->id]) }}"
+                                            class="btn btn-sm btn-primary"><i data-feather="edit-2"></i></a>
+                                        <a data-bs-toggle="modal" data-bs-target="#defaultModalDanger"
+                                            class="btn btn-sm btn-danger btn-delete" data-id="{{ $item->id }}"><i
                                                 data-feather="trash-2"></i></i></a>
                                     </td>
                                 </tr>
@@ -89,9 +90,34 @@
             </form>
         </div>
     </div>
+    <div class="modal fade" id="defaultModalDanger" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <form action="" id="delete" method="POST">
+                @csrf
+                @method('DELETE')
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Perhatian</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body m-3">
+                        <p class="mb-0">Apakah anda yakin ingin menghapus data?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-danger">Save changes</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
     <script>
         $("#datatables-reponsive").DataTable({
             responsive: true
+        });
+        $(".btn-delete").click(function() {
+            var id = $(this).data("id");
+            $("#delete").attr('action', '/guru/mapel/soal/' + id)
         });
     </script>
 @endsection

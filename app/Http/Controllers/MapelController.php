@@ -41,7 +41,7 @@ class MapelController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'nama' => 'required|max:255',
+            'nama' => 'required|max:255|unique:mapels,nama',
             'deskripsi' => 'max:255',
         ]);
         Mapel::create([

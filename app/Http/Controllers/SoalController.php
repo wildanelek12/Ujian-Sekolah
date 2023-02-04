@@ -102,6 +102,25 @@ class SoalController extends Controller
      */
     public function update(Request $request, Soal $soal)
     {
+        
+        $validated = $request->validate([
+            'soal' => 'required',
+            'opsi_a' => 'required',
+            'opsi_b' => 'required',
+            'opsi_c' => 'required',
+            'opsi_d' => 'required',
+            'opsi_e' => 'required',
+        ]);
+        $soal->update([
+            'soal' =>  $request->soal,
+            'opsi_a' =>  $request->opsi_a,
+            'opsi_b' =>  $request->opsi_b,
+            'opsi_c' =>  $request->opsi_c,
+            'opsi_d' =>  $request->opsi_d,
+            'opsi_e' =>  $request->opsi_e,
+            'key'   => $request->key
+        ]);
+        return redirect()->back()->with('success', 'Berhasil Mengupdate Soal');;
         //
     }
 
@@ -113,6 +132,8 @@ class SoalController extends Controller
      */
     public function destroy(Soal $soal)
     {
+        $soal->delete();
+        return redirect()->back()->with('success', 'Berhasil Menghapus Data Soal');
         //
     }
 }
