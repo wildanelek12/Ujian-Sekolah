@@ -56,7 +56,7 @@ Route::group([
         return view('siswa.pages.dashboard', compact('datas', 'durasi'));
     })->name("siswa.dashboard");
 
-    Route::get('/ujian/{url}', function (Request $request,$url) {
+    Route::get('/ujian/{url}', function (Request $request, $url) {
         $datas = Soal::where('mapel_id', $request->id)->get();
         $waktu_mulai = $request->waktu_mulai;
         $waktu_selesai = $request->waktu_selesai;
@@ -65,6 +65,11 @@ Route::group([
     })->name("siswa.ujian");
 
     Route::post('/ujian', [ResultController::class, 'store'])->name('siswa.result.store');
+
+    // Ubah Password
+    Route::get('/ubahpassword', function () {
+        return view('siswa.pages.ubah_password');
+    })->name("siswa.change");
 });
 
 Route::group([
@@ -90,7 +95,7 @@ Route::group([
 
     Route::get('/mapel/{id}/edit', function ($id) {
         $data = Soal::where('id', $id)->first();
-        return view('guru.pages.update_soal',compact('data'));
+        return view('guru.pages.update_soal', compact('data'));
     })->name("guru.edit");
     Route::put('/mapel/soal/{soal}', [SoalController::class, 'update'])->name('guru.soal.update');
     Route::delete('/mapel/soal/{soal}', [SoalController::class, 'destroy'])->name('guru.soal.delete');
@@ -98,6 +103,11 @@ Route::group([
     Route::get('/view', function () {
         return view('guru.pages.lihat_hasil');
     })->name("guru.view");
+
+    // Ubah Password
+    Route::get('/ubahpassword', function () {
+        return view('guru.pages.ubah_password');
+    })->name("guru.change");
 });
 
 Route::group([
@@ -161,6 +171,11 @@ Route::group([
 
     Route::resource('/mapel', MapelController::class);
     Route::resource('/ujian', UjianController::class);
+
+    // Ubah Password
+    Route::get('/ubahpassword', function () {
+        return view('admin.pages.ubah_password');
+    })->name("admin.change");
 });
 
 

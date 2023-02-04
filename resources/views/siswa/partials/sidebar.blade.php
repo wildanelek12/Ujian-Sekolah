@@ -16,14 +16,15 @@
         <div class="sidebar-user">
             <div class="d-flex justify-content-center">
                 <div class="flex-shrink-0">
-                    <img src="img/avatars/avatar.jpg" class="avatar img-fluid rounded me-1" alt="Charles Hall" />
+                    <img src="img/avatars/avatar_siswa.png" class="avatar img-fluid rounded me-1" alt="Charles Hall" />
                 </div>
                 <div class="flex-grow-1 ps-2">
                     <a class="sidebar-user-title dropdown-toggle" href="#" data-bs-toggle="dropdown">
                         {{Auth::user()->nama}}
                     </a>
                     <div class="dropdown-menu dropdown-menu-start">
-                        <a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
+                        <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
+                        <a class="dropdown-item" href="{{route('siswa.change')}}"><i class="align-middle me-1" data-feather="user"></i> Ubah Password</a>
                         <div class="dropdown-divider"></div>
                         <form action="{{route('logout')}}" method="POST">
                             @csrf

@@ -15,7 +15,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
         integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link class="js-stylesheet" href="{{ asset('css/light.css') }}" rel="stylesheet">
+    <link class="'js-stylesheet'" href="{{ asset('css/light.css') }}" rel="stylesheet">
     <script src="{{ asset('js/datatables.js') }}"></script>
     <style>
         body {
@@ -38,43 +38,74 @@
             @include('siswa.partials.sidebar')
         @endif
 
+
         <div class="main">
             @include('siswa.partials.header')
             <main class="content">
                 @yield('main')
             </main>
-
             <footer class="footer">
                 <div class="container-fluid">
                     <div class="row text-muted">
                         <div class="col-6 text-start">
                             <p class="mb-0">
-                                <a href="index.html" class="text-muted"><strong>AdminKit Demo</strong></a> &copy;
+                                <a href="index.html" class="text-muted"><strong>SMA KATOLIK YOS SUDARSO</strong></a>
+                                &copy;
                             </p>
                         </div>
-                        <div class="col-6 text-end">
-                            <ul class="list-inline">
-                                <li class="list-inline-item">
-                                    <a class="text-muted" href="#">Support</a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a class="text-muted" href="#">Help Center</a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a class="text-muted" href="#">Privacy</a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a class="text-muted" href="#">Terms</a>
-                                </li>
-                            </ul>
-                        </div>
+                        {{-- <div class="col-6 text-end">
+							<ul class="list-inline">
+								<li class="list-inline-item">
+									<a class="text-muted" href="#">Support</a>
+								</li>
+								<li class="list-inline-item">
+									<a class="text-muted" href="#">Help Center</a>
+								</li>
+								<li class="list-inline-item">
+									<a class="text-muted" href="#">Privacy</a>
+								</li>
+								<li class="list-inline-item">
+									<a class="text-muted" href="#">Terms</a>
+								</li>
+							</ul>
+						</div> --}}
                     </div>
                 </div>
             </footer>
         </div>
     </div>
 
-    <script src="{{ asset('js/app.js') }}"></script>
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row text-muted">
+                <div class="col-6 text-start">
+                    <p class="mb-0">
+                        <a href="index.html" class="text-muted"><strong>AdminKit Demo</strong></a> &copy;
+                    </p>
+                </div>
+                <div class="col-6 text-end">
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <a class="text-muted" href="#">Support</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="text-muted" href="#">Help Center</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="text-muted" href="#">Privacy</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="text-muted" href="#">Terms</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    </div>
+    </div>
+
+    <<<<<<< HEAD <script src="{{ asset('js/app.js') }}"></script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -316,6 +347,8 @@
             });
         });
     </script>
+    =======
+    >>>>>>> 8b4551ab7bdb6e3440a48a4f5c30e3b38f9d590a
 
 </body>
 

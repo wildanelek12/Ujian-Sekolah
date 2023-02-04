@@ -46,10 +46,10 @@
                     <div class="row text-muted">
                         <div class="col-6 text-start">
                             <p class="mb-0">
-                                <a href="index.html" class="text-muted"><strong>AdminKit Demo</strong></a> &copy;
+                                <a href="index.html" class="text-muted"><strong>SMA KATOLIK YOS SUDARSO</strong></a> &copy;
                             </p>
                         </div>
-                        <div class="col-6 text-end">
+                        {{-- <div class="col-6 text-end">
                             <ul class="list-inline">
                                 <li class="list-inline-item">
                                     <a class="text-muted" href="#">Support</a>
@@ -64,7 +64,7 @@
                                     <a class="text-muted" href="#">Terms</a>
                                 </li>
                             </ul>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </footer>
