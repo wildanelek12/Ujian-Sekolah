@@ -1,4 +1,4 @@
-@extends('admin.index')
+@extends('siswa.index')
 @section('main')
     <div class="row">
         <div class="col-8">
@@ -66,15 +66,23 @@
         <div class="col-4">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title mb-0">No Soal</h5>
+                    <h5 class="card-title mb-0 ">No Soal</h5>
                 </div>
                 <div class="card-body">
+                    <div class="row justify-content-center">
+                        <div class="col text-end">
+                            <button class="btn btn-primary" id="countdown">90:00</button>
+                        </div>
+                    </div>
                     <div class="row" id="nav_soal">
                         {{-- <div class="col-1 gx-5 gy-3">
                             <button class="btn btn-success"> 1</button>
                         </div> --}}
                     </div>
                 </div>
+            </div>
+            <div class="row justify-content-center">
+                <button class="btn btn-success">Submit</button>
             </div>
         </div>
     </div>
