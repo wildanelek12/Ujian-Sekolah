@@ -4,44 +4,62 @@
         <div class="col-8">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title mb-0">Radios</h5>
+                    <h5 class="card-title mb-0">No. ...</h5>
                 </div>
-                <div class="card-body">
+                <div class="card-body mb-3">
                     <div>
-                        <h3 id="soal">Ini Soal lorem ipsum dolore</h3>
-                        <label class="form-check mt-4">
-                            <input class="form-check-input" type="radio" value="a" name="opsi">
-                            <span class="form-check-label" id="opsi_a">
-                                Opsi A
-                            </span>
-                        </label>
-                        <label class="form-check">
-                            <input class="form-check-input" type="radio" value="b" name="opsi">
-                            <span class="form-check-label" id="opsi_b">
-                                Opsi B
-                            </span>
-                        </label>
-                        <label class="form-check">
-                            <input class="form-check-input" type="radio" value="c" name="opsi">
-                            <span class="form-check-label" id="opsi_c">
-                                Opsi C
-                            </span>
-                        </label>
-                        <label class="form-check">
-                            <input class="form-check-input" type="radio" value="d" name="opsi">
-                            <span class="form-check-label" id="opsi_d">
-                                Opsi D
-                            </span>
-                        </label>
-                        <label class="form-check">
-                            <input class="form-check-input" type="radio" value="e" name="opsi">
-                            <span class="form-check-label" id="opsi_e">
-                                Opsi E
-                            </span>
-                        </label>
-                        <button id="previous">Previous</button>
-                        <button id="next">Next</button>
+                        <h3 id="soal">Soal akan dimunculkan pada bagian ini</h3>
                     </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <label class="form-check">
+                        <input class="form-check-input" type="radio" value="a" name="opsi">
+                        <span class="form-check-label" id="opsi_a">
+                            Opsi A
+                        </span>
+                    </label>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <label class="form-check">
+                        <input class="form-check-input" type="radio" value="b" name="opsi">
+                        <span class="form-check-label" id="opsi_b">
+                            Opsi B
+                        </span>
+                    </label>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <label class="form-check">
+                        <input class="form-check-input" type="radio" value="c" name="opsi">
+                        <span class="form-check-label" id="opsi_c">
+                            Opsi C
+                        </span>
+                    </label>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <label class="form-check">
+                        <input class="form-check-input" type="radio" value="d" name="opsi">
+                        <span class="form-check-label" id="opsi_d">
+                            Opsi D
+                        </span>
+                    </label>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <label class="form-check">
+                        <input class="form-check-input" type="radio" value="e" name="opsi">
+                        <span class="form-check-label" id="opsi_e">
+                            Opsi E
+                        </span>
+                    </label>
                 </div>
             </div>
         </div>
@@ -60,6 +78,15 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-4">
+            <button id="previous" class="btn btn-primary">Previous</button>
+        </div>
+        <div class="col-4 text-end">
+            <button id="next" class="btn btn-primary">Next</button>
+        </div>
+    </div>
+
     <script>
         $(document).ready(function() {
             var index = 0;

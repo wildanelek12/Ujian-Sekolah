@@ -17,6 +17,11 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link class="'js-stylesheet'" href="{{ asset('css/light.css') }}" rel="stylesheet">
     <script src="{{ asset('js/datatables.js') }}"></script>
+    <style>
+        .ql-editor {
+            min-height: 150px !important;
+        }
+    </style>
     <!-- END SETTINGS -->
 </head>
 <!--
